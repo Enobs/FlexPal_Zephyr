@@ -360,9 +360,6 @@ WEST_PYTHON:UNINITIALIZED=/usr/bin/python3
 //Zephyr base
 ZEPHYR_BASE:PATH=/workdir/zephyr
 
-//Path to Zephyr git repository index file
-ZEPHYR_GIT_INDEX:PATH=/workdir/zephyr/.git/index
-
 //Zephyr SDK install directory
 ZEPHYR_SDK_INSTALL_DIR:PATH=/opt/toolchains/zephyr-sdk-0.16.1
 

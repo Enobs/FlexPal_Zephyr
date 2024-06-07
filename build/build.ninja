@@ -983,7 +983,7 @@ build zephyr/CMakeFiles/version_h | ${cmake_ninja_workdir}zephyr/CMakeFiles/vers
 #############################################
 # Custom command for zephyr/include/generated/version.h
 
-build zephyr/include/generated/version.h | ${cmake_ninja_workdir}zephyr/include/generated/version.h: CUSTOM_COMMAND /workdir/zephyr/VERSION /workdir/zephyr/.git/index
+build zephyr/include/generated/version.h | ${cmake_ninja_workdir}zephyr/include/generated/version.h: CUSTOM_COMMAND /workdir/zephyr/VERSION
   COMMAND = cd /workdir/build/zephyr && /usr/bin/cmake -DZEPHYR_BASE=/workdir/zephyr -DOUT_FILE=/workdir/build/zephyr/include/generated/version.h -DVERSION_TYPE=KERNEL -DVERSION_FILE=/workdir/zephyr/VERSION -DKERNEL_VERSION_CUSTOMIZATION="" -P /workdir/zephyr/cmake/gen_version_h.cmake
   DESC = Generating include/generated/version.h
   restat = 1

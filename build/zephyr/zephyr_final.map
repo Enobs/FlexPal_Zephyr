@@ -4427,28 +4427,28 @@ rodata          0x000000000800f5f8     0x31b4
  .rodata.str1.1
                 0x0000000008012609       0x36 zephyr/kernel/libkernel.a(thread.c.obj)
  .rodata.boot_banner.str1.1
-                0x000000000801263f       0x2f zephyr/kernel/libkernel.a(banner.c.obj)
+                0x000000000801263f       0x2e zephyr/kernel/libkernel.a(banner.c.obj)
  .rodata.k_sys_work_q_init.str1.1
-                0x000000000801266e        0x9 zephyr/kernel/libkernel.a(system_work_q.c.obj)
+                0x000000000801266d        0x9 zephyr/kernel/libkernel.a(system_work_q.c.obj)
  .rodata._ctype_
-                0x0000000008012677      0x101 /opt/toolchains/zephyr-sdk-0.16.1/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m/nofp/libc.a(libc_ctype_ctype_.c.o)
-                0x0000000008012677                _ctype_
+                0x0000000008012676      0x101 /opt/toolchains/zephyr-sdk-0.16.1/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m/nofp/libc.a(libc_ctype_ctype_.c.o)
+                0x0000000008012676                _ctype_
  .rodata.pstr_an
-                0x0000000008012778        0x3 /opt/toolchains/zephyr-sdk-0.16.1/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m/nofp/libc.a(libc_tinystdio_strtod.c.o)
+                0x0000000008012777        0x3 /opt/toolchains/zephyr-sdk-0.16.1/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m/nofp/libc.a(libc_tinystdio_strtod.c.o)
  .rodata.pstr_nfinity
-                0x000000000801277b        0x8 /opt/toolchains/zephyr-sdk-0.16.1/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m/nofp/libc.a(libc_tinystdio_strtod.c.o)
+                0x000000000801277a        0x8 /opt/toolchains/zephyr-sdk-0.16.1/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m/nofp/libc.a(libc_tinystdio_strtod.c.o)
  .rodata.vfprintf.str1.1
-                0x0000000008012783        0xb /opt/toolchains/zephyr-sdk-0.16.1/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m/nofp/libc.a(libc_tinystdio_vfprintf.c.o)
+                0x0000000008012782        0xb /opt/toolchains/zephyr-sdk-0.16.1/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m/nofp/libc.a(libc_tinystdio_vfprintf.c.o)
                                           0xf (size before relaxing)
  .rodata.vfscanf.str1.1
-                0x000000000801278e       0x12 /opt/toolchains/zephyr-sdk-0.16.1/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m/nofp/libc.a(libc_tinystdio_vfscanf.c.o)
+                0x000000000801278d       0x12 /opt/toolchains/zephyr-sdk-0.16.1/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m/nofp/libc.a(libc_tinystdio_vfscanf.c.o)
  .rodata.pstr_an
-                0x00000000080127a0        0x3 /opt/toolchains/zephyr-sdk-0.16.1/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m/nofp/libc.a(libc_tinystdio_vfscanf.c.o)
+                0x000000000801279f        0x3 /opt/toolchains/zephyr-sdk-0.16.1/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m/nofp/libc.a(libc_tinystdio_vfscanf.c.o)
  .rodata.pstr_nfinity
-                0x00000000080127a3        0x8 /opt/toolchains/zephyr-sdk-0.16.1/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m/nofp/libc.a(libc_tinystdio_vfscanf.c.o)
+                0x00000000080127a2        0x8 /opt/toolchains/zephyr-sdk-0.16.1/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m/nofp/libc.a(libc_tinystdio_vfscanf.c.o)
  *(SORT_BY_ALIGNMENT(.gnu.linkonce.r.*))
                 0x00000000080127ac                . = ALIGN (0x4)
- *fill*         0x00000000080127ab        0x1 
+ *fill*         0x00000000080127aa        0x2 
                 0x00000000080127ac                __rodata_region_end = .
                 0x00000000080127c0                . = ALIGN (_region_min_align)
                 0x0000000008020000                . = ALIGN ((0x1 << LOG2CEIL ((__rodata_region_end - ADDR (rom_start)))))
