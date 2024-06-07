@@ -1,0 +1,11 @@
+description: |
+    This devive is a air valve Controller.
+
+compatible: "air,valve"
+
+properties:
+  valve-gpios:
+    type: phandle-array
+    required: true
+    description: |
+      The GPIO connected to the gate driver for the MOSFET.

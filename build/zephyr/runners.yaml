@@ -1,0 +1,33 @@
+# Available runners configured by board.cmake.
+runners:
+- pyocd
+- jlink
+
+# Default flash runner if --runner is not given.
+flash-runner: pyocd
+
+# Default debug runner if --runner is not given.
+debug-runner: pyocd
+
+# Common runner configuration values.
+config:
+  board_dir: /workdir/zephyr/boards/arm/gd32f407v_start
+  # Build outputs:
+  elf_file: zephyr.elf
+  hex_file: zephyr.hex
+  bin_file: zephyr.bin
+  # Host tools:
+  gdb: /opt/toolchains/zephyr-sdk-0.16.1/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb
+  openocd: /opt/toolchains/zephyr-sdk-0.16.1/sysroots/x86_64-pokysdk-linux/usr/bin/openocd
+  openocd_search:
+    - /opt/toolchains/zephyr-sdk-0.16.1/sysroots/x86_64-pokysdk-linux/usr/share/openocd/scripts
+
+# Runner specific arguments
+args:
+  pyocd:
+    - --dt-flash=y
+    - --target=gd32f407vk
+  jlink:
+    - --dt-flash=y
+    - --device=GD32F407VK
+    - --speed=4000

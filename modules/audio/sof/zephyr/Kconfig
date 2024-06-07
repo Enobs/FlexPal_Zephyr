@@ -1,0 +1,49 @@
+if SOF
+rsource "../Kconfig.sof"
+
+config SOF_ZEPHYR_HEAP_CACHED
+	bool "Cached Zephyr heap for SOF memory non-shared zones"
+	default y if CAVS || ACE
+	default n
+	help
+	  Enable cached heap by mapping cached SOF memory zones to different
+	  Zephyr sys_heap objects and enable caching for non-shared zones.
+
+config ZEPHYR_NATIVE_DRIVERS
+	bool "Use Zephyr native drivers"
+	default n
+	help
+	  Enable Zephyr native api drivers for host and dai audio components
+	  host-zephyr
+	  dai-zephyr
+	  will be used instead of legacy xtos version.
+
+config SOF_ZEPHYR_STRICT_HEADERS
+	bool "Experimental: Force build with Zephyr RTOS headers only"
+	default n
+	help
+	  This is a transitional option that allows developers to test builds
+	  only using the Zephyr RTOS headers. This will eventually become the
+	  default header configuration when native Zephyr is ready and this menu
+	  choice will be removed.
+	  If unsure, say n.
+
+config DMA_DOMAIN
+	bool "Enable the usage of DMA domain."
+	default y if IMX
+	help
+	  This enables the usage of the DMA domain in scheduling.
+
+config ZEPHYR_DP_SCHEDULER
+	bool "use Zephyr thread based DP scheduler"
+	default y if ACE
+	default n
+	depends on IPC_MAJOR_4
+	depends on ZEPHYR_SOF_MODULE
+	help
+	  Enable Data Processing preemptive scheduler based on
+	  Zephyr preemptive threads.
+	  DP modules can be located in dieffrent cores than LL pipeline modules, may have
+	  different tick (i.e. 300ms for speech reccognition, etc.)
+
+endif

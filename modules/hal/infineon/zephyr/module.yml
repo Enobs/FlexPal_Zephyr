@@ -1,0 +1,294 @@
+name: hal_infineon
+build:
+  cmake-ext: True
+  kconfig-ext: True
+blobs:
+#cat1cm0p
+  #COMPONENT_CM0P_SLEEP
+  - path: img/cat1cm0p/COMPONENT_CM0P_SLEEP/psoc6_01_cm0p_sleep.bin
+    sha256: 7b1ac91f157ee7004c9175d471dd29d0edbbcea5a3d53c8da634cceffb5694e6
+    type: img
+    version: '1.0.0'
+    license-path: ./LICENSE.txt
+    url: https://github.com/Infineon/cat1cm0p/raw/release-v1.0.0/COMPONENT_CAT1A/COMPONENT_CM0P_SLEEP/psoc6_01_cm0p_sleep.bin
+    description: "PSoC 6 Cortex M0+ DeepSleep prebuilt image (CM0P_SLEEP)"
+    doc-url: https://github.com/Infineon/cat1cm0p
+  - path: img/cat1cm0p/COMPONENT_CM0P_SLEEP/psoc6_02_cm0p_sleep.bin
+    sha256: 5ec09f8b725051ed429f2214e3ee57ae29a097fb6152ad1ac3f53d47a7476057
+    type: img
+    version: '1.0.0'
+    license-path: ./LICENSE.txt
+    url: https://github.com/Infineon/cat1cm0p/raw/release-v1.0.0/COMPONENT_CAT1A/COMPONENT_CM0P_SLEEP/psoc6_02_cm0p_sleep.bin
+    description: "PSoC 6 Cortex M0+ DeepSleep prebuilt image (CM0P_SLEEP)"
+    doc-url: https://github.com/Infineon/cat1cm0p
+  - path: img/cat1cm0p/COMPONENT_CM0P_SLEEP/psoc6_03_cm0p_sleep.bin
+    sha256: b909aceaa28ce15d58c0b57bd08adb62ed3f91ca318cbc7cf6d1c8895201e7c1
+    type: img
+    version: '1.0.0'
+    license-path: ./LICENSE.txt
+    url: https://github.com/Infineon/cat1cm0p/raw/release-v1.0.0/COMPONENT_CAT1A/COMPONENT_CM0P_SLEEP/psoc6_03_cm0p_sleep.bin
+    description: "PSoC 6 Cortex M0+ DeepSleep prebuilt image (CM0P_SLEEP)"
+    doc-url: https://github.com/Infineon/cat1cm0p
+  - path: img/cat1cm0p/COMPONENT_CM0P_SLEEP/psoc6_04_cm0p_sleep.bin
+    sha256: 544b92e5a927ac7090a67ee327b9cc39d1a91f93e689877489f0e8a7d27238dc
+    type: img
+    version: '1.0.0'
+    license-path: ./LICENSE.txt
+    url: https://github.com/Infineon/cat1cm0p/raw/release-v1.0.0/COMPONENT_CAT1A/COMPONENT_CM0P_SLEEP/psoc6_04_cm0p_sleep.bin
+    description: "PSoC 6 Cortex M0+ DeepSleep prebuilt image (CM0P_SLEEP)"
+    doc-url: https://github.com/Infineon/cat1cm0p
+
+#wifi-host-driver (firmware and clm blobs)
+  #CYW43012 Device
+  #firmware
+  - path: img/whd/resources/firmware/COMPONENT_43012/43012C0.bin
+    sha256: FE7FDA9FB1FDF1CD5BB238AB69623C09907F3ECEAB38279C1A6D0441400F86BB
+    type: img
+    version: '2.6.0'
+    license-path: zephyr/blobs/license.txt
+    url: https://github.com/Infineon/wifi-host-driver/raw/release-v2.6.0/WiFi_Host_Driver/resources/firmware/COMPONENT_43012/43012C0.bin
+    description: "Wi-Fi Firmware for CYW43012 Device"
+    doc-url: https://github.com/Infineon/wifi-host-driver
+  #firmware (mfgtest)
+  - path: img/whd/resources/firmware/COMPONENT_43012/43012C0-mfgtest.bin
+    sha256: EC6E23BB1E2A73C9BC6DE4EC29900BAFA36BA35F4BFC676186275CD333EF1793
+    type: img
+    version: '2.6.0'
+    license-path: zephyr/blobs/license.txt
+    url: https://github.com/Infineon/wifi-host-driver/raw/release-v2.6.0/WiFi_Host_Driver/resources/firmware/COMPONENT_43012/43012C0-mfgtest.bin
+    description: "Wi-Fi Firmware (mfgtest) for CYW43012 Device"
+    doc-url: https://github.com/Infineon/wifi-host-driver
+  #clm
+  - path: img/whd/resources/clm/COMPONENT_43012/43012C0.clm_blob
+    sha256: 2168A39BB68452558C96883BE66301655663A41AA328AD92CB9B3795E65D835E
+    type: img
+    version: '2.6.0'
+    license-path: zephyr/blobs/license.txt
+    url: https://github.com/Infineon/wifi-host-driver/raw/release-v2.6.0/WiFi_Host_Driver/resources/clm/COMPONENT_43012/43012C0.clm_blob
+    description: "Wi-Fi CLM for CYW43012 Device"
+    doc-url: https://github.com/Infineon/wifi-host-driver
+  #clm (mfgtest)
+  - path: img/whd/resources/clm/COMPONENT_43012/43012C0-mfgtest.clm_blob
+    sha256: FFDE6DFA33A4AF23AC227DFEAD536F49EF2CD6B147D2778F07CB86BAB597D95A
+    type: img
+    version: '2.6.0'
+    license-path: zephyr/blobs/license.txt
+    url: https://github.com/Infineon/wifi-host-driver/raw/release-v2.6.0/WiFi_Host_Driver/resources/clm/COMPONENT_43012/43012C0-mfgtest.clm_blob
+    description: "Wi-Fi CLM (mfgtest) for CYW43012 Device"
+    doc-url: https://github.com/Infineon/wifi-host-driver
+
+ #CYW4343W Device
+  #firmware
+  - path: img/whd/resources/firmware/COMPONENT_4343W/4343WA1.bin
+    sha256: 672F94B68BC19236C75C395F5D1BE7524635C9D812F6F74585996921290BBCD1
+    type: img
+    version: '2.6.0'
+    license-path: zephyr/blobs/license.txt
+    url: https://github.com/Infineon/wifi-host-driver/raw/release-v2.6.0/WiFi_Host_Driver/resources/firmware/COMPONENT_4343W/4343WA1.bin
+    description: "Wi-Fi Firmware for CYW4343W (mfgtest) Device"
+    doc-url: https://github.com/Infineon/wifi-host-driver
+  #firmware (mfgtest)
+  - path: img/whd/resources/firmware/COMPONENT_4343W/4343WA1-mfgtest.bin
+    sha256: 00B5E0C87571B7D259C6168FB8E37C312CD011A8465A071776BEF35C2A0C3CB1
+    type: img
+    version: '2.6.0'
+    license-path: zephyr/blobs/license.txt
+    url: https://github.com/Infineon/wifi-host-driver/raw/release-v2.6.0/WiFi_Host_Driver/resources/firmware/COMPONENT_4343W/4343WA1-mfgtest.bin
+    description: "Wi-Fi Firmware for CYW4343W Device"
+    doc-url: https://github.com/Infineon/wifi-host-driver
+  #clm
+  - path: img/whd/resources/clm/COMPONENT_4343W/4343WA1.clm_blob
+    sha256: 4A2B14F19BFEE84B403EF04E8CA3483E298CB4AAAB1013ECC5FB80379901B8D3
+    type: img
+    version: '2.6.0'
+    license-path: zephyr/blobs/license.txt
+    url: https://github.com/Infineon/wifi-host-driver/raw/release-v2.6.0/WiFi_Host_Driver/resources/clm/COMPONENT_4343W/4343WA1.clm_blob
+    description: "Wi-Fi CLM for CYW4343W Device"
+    doc-url: https://github.com/Infineon/wifi-host-driver
+  #clm (mfgtest)
+  - path: img/whd/resources/clm/COMPONENT_4343W/4343WA1-mfgtest.clm_blob
+    sha256: 51E5FF506775A171D28734C79510D57A05F1CD530294CFF31B6CA9E4FDF4FC04
+    type: img
+    version: '2.6.0'
+    license-path: zephyr/blobs/license.txt
+    url: https://github.com/Infineon/wifi-host-driver/raw/release-v2.6.0/WiFi_Host_Driver/resources/clm/COMPONENT_4343W/4343WA1-mfgtest.clm_blob
+    description: "Wi-Fi CLM for CYW4343W (mfgtest) Device"
+    doc-url: https://github.com/Infineon/wifi-host-driver
+  
+  #CYW43438 Device
+  #firmware
+  - path: img/whd/resources/firmware/COMPONENT_43438/43438A1.bin
+    sha256: F85E3FEED55C429CF2FC88316DBA472647DA25622BAC6C07AB63807FA0AD875E
+    type: img
+    version: '2.6.0'
+    license-path: zephyr/blobs/license.txt
+    url: https://github.com/Infineon/wifi-host-driver/raw/release-v2.6.0/WiFi_Host_Driver/resources/firmware/COMPONENT_43438/43438A1.bin
+    description: "Wi-Fi Firmware for CYW43438 Device"
+    doc-url: https://github.com/Infineon/wifi-host-driver
+  #firmware (mfgtest)
+  - path: img/whd/resources/firmware/COMPONENT_43438/43438A1-mfgtest.bin
+    sha256: E54F2246B6B095621FB12D46AC355B854BF637F9BB8829195D622B7DAE6A74F8
+    type: img
+    version: '2.6.0'
+    license-path: zephyr/blobs/license.txt
+    url: https://github.com/Infineon/wifi-host-driver/raw/release-v2.6.0/WiFi_Host_Driver/resources/firmware/COMPONENT_43438/43438A1-mfgtest.bin
+    description: "Wi-Fi Firmware (mfgtest) for CYW43438 Device"
+    doc-url: https://github.com/Infineon/wifi-host-driver
+  #clm
+  - path: img/whd/resources/clm/COMPONENT_43438/43438A1.clm_blob
+    sha256: E10611BA6721B8639426D4491A06C53587B56A5EA20F3F4B30CCD8866E26695B
+    type: img
+    version: '2.6.0'
+    license-path: zephyr/blobs/license.txt
+    url: https://github.com/Infineon/wifi-host-driver/raw/release-v2.6.0/WiFi_Host_Driver/resources/clm/COMPONENT_43438/43438A1.clm_blob
+    description: "Wi-Fi CLM for CYW43438 Device"
+    doc-url: https://github.com/Infineon/wifi-host-driver
+  #clm (mfgtest)
+  - path: img/whd/resources/clm/COMPONENT_43438/43438A1-mfgtest.clm_blob
+    sha256: DEA0FF2B093EC5ADAAFAFD394BFF39141C7435088DA3F1BC32E1B3327EB30E9D
+    type: img
+    version: '2.6.0'
+    license-path: zephyr/blobs/license.txt
+    url: https://github.com/Infineon/wifi-host-driver/raw/release-v2.6.0/WiFi_Host_Driver/resources/clm/COMPONENT_43438/43438A1-mfgtest.clm_blob
+    description: "Wi-Fi CLM for CYW43438(mfgtest) Device"
+    doc-url: https://github.com/Infineon/wifi-host-driver
+
+  #CYW43439 Device
+  #firmware
+  - path: img/whd/resources/firmware/COMPONENT_43439/43439a0.bin
+    sha256: 651092A60C1A909EAB8A90455F6FEDE608A8B6CACA32E3A6156D376A67FAFD02
+    type: img
+    version: '2.6.0'
+    license-path: zephyr/blobs/license.txt
+    url: https://github.com/Infineon/wifi-host-driver/raw/release-v2.6.0/WiFi_Host_Driver/resources/firmware/COMPONENT_43439/43439a0.bin
+    description: "Wi-Fi Firmware for CYW43439 Device"
+    doc-url: https://github.com/Infineon/wifi-host-driver
+  #firmware (mfgtest)
+  - path: img/whd/resources/firmware/COMPONENT_43439/43439a0-mfgtest.bin
+    sha256: FC8BF8D3054B3CA1B261B20134020652737D55BD453477DEDA31C5C04BB6FC3E
+    type: img
+    version: '2.6.0'
+    license-path: zephyr/blobs/license.txt
+    url: https://github.com/Infineon/wifi-host-driver/raw/release-v2.6.0/WiFi_Host_Driver/resources/firmware/COMPONENT_43439/43439a0-mfgtest.bin
+    description: "Wi-Fi Firmware for CYW43439 (mfgtest) Device"
+    doc-url: https://github.com/Infineon/wifi-host-driver
+  #clm
+  - path: img/whd/resources/clm/COMPONENT_43439/43439A0.clm_blob
+    sha256: 60BE731F3C147B28E21EA89389E29E34D1C01A09509EDF285334EC1BCB1DA38A
+    type: img
+    version: '2.6.0'
+    license-path: zephyr/blobs/license.txt
+    url: https://github.com/Infineon/wifi-host-driver/raw/release-v2.6.0/WiFi_Host_Driver/resources/clm/COMPONENT_43439/43439A0.clm_blob
+    description: "Wi-Fi CLM for CYW43439 Device"    
+    doc-url: https://github.com/Infineon/wifi-host-driver
+  #clm (mfgtest)
+  - path: img/whd/resources/clm/COMPONENT_43439/43439A0-mfgtest.clm_blob
+    sha256: EF94FEF099CE7C775A63C1009A67F086DB63AE933F14F5FBE95B72AE541F7AE7
+    type: img
+    version: '2.6.0'
+    license-path: zephyr/blobs/license.txt
+    url: https://github.com/Infineon/wifi-host-driver/raw/release-v2.6.0/WiFi_Host_Driver/resources/clm/COMPONENT_43439/43439A0-mfgtest.clm_blob
+    description: "Wi-Fi CLM for CYW43439 (mfgtest) Device"
+    doc-url: https://github.com/Infineon/wifi-host-driver
+
+  #CYW4373 Device
+  #firmware
+  - path: img/whd/resources/firmware/COMPONENT_4373/4373A0.bin
+    sha256: D980497929D62DC81208060766A69BB5BDED52748B8E6C484F704CF12867A0BF
+    type: img
+    version: '2.6.0'
+    license-path: zephyr/blobs/license.txt
+    url: https://github.com/Infineon/wifi-host-driver/raw/release-v2.6.0/WiFi_Host_Driver/resources/firmware/COMPONENT_4373/4373A0.bin
+    description: "Wi-Fi Firmware for CYW4373 Device"
+    doc-url: https://github.com/Infineon/wifi-host-driver    
+  #firmware (mfgtest)
+  - path: img/whd/resources/firmware/COMPONENT_4373/4373A0-mfgtest.bin
+    sha256: E347F14BF028CD8FF73B687AC6D54BBFE9E820DADACB5592CD14C83736E3A842
+    type: img
+    version: '2.6.0'
+    license-path: zephyr/blobs/license.txt
+    url: https://github.com/Infineon/wifi-host-driver/raw/release-v2.6.0/WiFi_Host_Driver/resources/firmware/COMPONENT_4373/4373A0-mfgtest.bin
+    description: "Wi-Fi Firmware (mfgtest) for CYW4373 Device"
+    doc-url: https://github.com/Infineon/wifi-host-driver
+  #clm
+  - path: img/whd/resources/clm/COMPONENT_4373/4373A0.clm_blob
+    sha256: F5C84EB08FF6C330230AA0D4EC645AD9B95A0219173D5B920309B045CBFB1014
+    type: img
+    version: '2.6.0'
+    license-path: zephyr/blobs/license.txt
+    url: https://github.com/Infineon/wifi-host-driver/raw/release-v2.6.0/WiFi_Host_Driver/resources/clm/COMPONENT_4373/COMPONENT_STERLING-LWB5plus/4373A0.clm_blob
+    description: "Wi-Fi CLM for CYW4373 Device"
+    doc-url: https://github.com/Infineon/wifi-host-driver
+  #clm (mfgtest)
+  - path: img/whd/resources/clm/COMPONENT_4373/4373A0-mfgtest.clm_blob
+    sha256: 56d3a09b077ed91a1063362ad685a72d7fce772291046cb17f8be699ada06796
+    type: img
+    version: '2.5.0'
+    license-path: zephyr/blobs/license.txt
+    url: https://github.com/Infineon/wifi-host-driver/raw/release-v2.5.0/WiFi_Host_Driver/resources/clm/COMPONENT_4373/4373A0-mfgtest.clm_blob
+    description: "Wi-Fi CLM for CYW4373 (mfgtest) Device"
+    doc-url: https://github.com/Infineon/wifi-host-driver
+
+# bluetooth-integration (controller firmware blobs for CY43xx connectivity devices)
+    #CYW43012 Device
+    #MURATA-1LV module
+  - path: img/bluetooth/firmware/COMPONENT_43012/COMPONENT_MURATA-1LV/bt_firmware.hcd
+    sha256: 7866ac13cd06a03dcd7fc748ac82df5d76d034f5204dd277a7c6131594aed162
+    type: img
+    version: '4.1.1'
+    license-path: zephyr/blobs/license.txt
+    url: https://raw.githubusercontent.com/Infineon/btstack-integration/release-v4.1.1/COMPONENT_HCI-UART/firmware/COMPONENT_43012/COMPONENT_MURATA-1LV/CYW43012C0_003.001.015.0229.0000_Generic_UART_37_4MHz_wlcsp_ref3_sLNA_CYW943012M2BT1LV.hcd
+    description: "Bluetooth Controller FW for MURATA-1LV Module"
+    doc-url: https://github.com/Infineon/btstack-integration
+
+    #CYW4343W Device
+    #MURATA-1DX module
+  - path: img/bluetooth/firmware/COMPONENT_4343W/COMPONENT_MURATA-1DX/bt_firmware.hcd
+    sha256: 485bd176ffe1516f0c07e0c26c580111c8cc4e82b97b5e0b032d0e11af4dabd7
+    type: img
+    version: '4.1.1'
+    license-path: zephyr/blobs/license.txt
+    url: https://raw.githubusercontent.com/Infineon/btstack-integration/release-v4.1.1/COMPONENT_HCI-UART/firmware/COMPONENT_4343W/COMPONENT_MURATA-1DX/BCM4343A1_001.002.009.0153.0000_Generic_UART_37_4MHz_wlbga_eLG_lite_AnyCloud.hcd
+    description: "Bluetooth Controller FW for MURATA-1YN Module"
+    doc-url: https://github.com/Infineon/btstack-integration
+
+    #CYW43439 Device
+    #MURATA-1YN module
+  - path: img/bluetooth/firmware/COMPONENT_43439/COMPONENT_MURATA-1YN/bt_firmware.hcd
+    sha256: d19812c150b54138141cfcb1ffd1732c0c02694a8a37fc0cc49d8face0972363
+    type: img
+    version: '4.1.1'
+    license-path: zephyr/blobs/license.txt
+    url: https://raw.githubusercontent.com/Infineon/btstack-integration/release-v4.1.1/COMPONENT_HCI-UART/firmware/COMPONENT_43439/COMPONENT_MURATA-1YN/CYW4343A2_001.003.016.0031.0000_Generic_UART_37_4MHz_wlbga_BU_dl_signed.hcd
+    description: "Bluetooth Controller FW for MURATA-1YN Module"
+    doc-url: https://github.com/Infineon/btstack-integration
+
+    #CYW4373 Device
+    #STERLING-LWB5plus module
+  - path: img/bluetooth/firmware/COMPONENT_4373/COMPONENT_STERLING-LWB5plus/bt_firmware.hcd
+    sha256: 92a4f1fe651ddc454e7a99d99b1422c5dca733078b1d73f509f2002a2430e52b
+    type: img
+    version: '4.1.1'
+    license-path: zephyr/blobs/license.txt
+    url: https://raw.githubusercontent.com/Infineon/btstack-integration/release-v4.1.1/COMPONENT_HCI-UART/firmware/COMPONENT_4373/COMPONENT_STERLING-LWB5plus/CYW4373A0_001.001.025.0090.0129_UART_M2.hcd
+    description: "Bluetooth Controller FW for MURATA-1YN Module"
+    doc-url: https://github.com/Infineon/btstack-integration
+
+# bless
+  - path: img/bluetooth/firmware/COMPONENT_BLESS_CONTROLLER/cy_ble_stack_controller.a
+    sha256: 6278ee76b34e04ab0a82c3254b150c6c78375f3e9dea08b593899a865dd7cb6a
+    type: img
+    version: '3.60.0.725'
+    license-path: ./LICENSE.txt
+    url: https://github.com/Infineon/bless/raw/latest-v3.X/COMPONENT_BLESS_CONTROLLER/COMPONENT_CM4/COMPONENT_SOFTFP/TOOLCHAIN_GCC_ARM/cy_ble_stack_controller.a
+    description: "BLESS Bluetooth Controller FW"
+    doc-url: https://github.com/Infineon/bless
+
+  - path: img/bluetooth/firmware/COMPONENT_BLESS_CONTROLLER/cy_ble_stack_manager.a
+    sha256: f04c54d7761319df06569c65017d1e0733e2bf4dc007be16582ab26aeadba137
+    type: img
+    version: '3.60.0.725'
+    license-path: ./LICENSE.txt
+    url: https://github.com/Infineon/bless/raw/latest-v3.X/COMPONENT_BLESS_CONTROLLER/COMPONENT_CM4/COMPONENT_SOFTFP/TOOLCHAIN_GCC_ARM/cy_ble_stack_manager.a
+    description: "BLESS Bluetooth Controller FW"
+    doc-url: https://github.com/Infineon/bless

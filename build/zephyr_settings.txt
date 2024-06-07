@@ -1,0 +1,14 @@
+# WARNING. THIS FILE IS AUTO-GENERATED. DO NOT MODIFY!
+#
+# This file contains build system settings derived from your modules.
+#
+# Modules may be set via ZEPHYR_MODULES, ZEPHYR_EXTRA_MODULES,
+# and/or the west manifest file.
+#
+# See the Modules guide for more information.
+"DTS_ROOT":"/workdir/modules/hal/atmel"
+"DTS_ROOT":"/workdir/modules/hal/espressif"
+"DTS_ROOT":"/workdir/modules/hal/gigadevice"
+"DTS_ROOT":"/workdir/modules/hal/nuvoton"
+"DTS_ROOT":"/workdir/modules/hal/nxp"
+"DTS_ROOT":"/workdir/modules/hal/stm32"

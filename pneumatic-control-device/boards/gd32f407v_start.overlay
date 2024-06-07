@@ -1,0 +1,271 @@
+/ {
+	model = "GigaDevice GD32F407V-START";
+	compatible = "gd,gd32f407v-start";
+
+	chosen {
+		zephyr,sram = &sram0;
+		zephyr,flash = &flash0;
+		zephyr,console = &usart0;
+		zephyr,shell-uart = &usart0;
+	};
+	aliases {
+		uart1 = &usart1;
+		uart2 = &usart2;
+	};
+	air-valve {
+		compatible = "air,valve";
+		valve-gpios = <&gpioe 7  GPIO_ACTIVE_HIGH>,	// valve1
+		              <&gpiob 2  GPIO_ACTIVE_HIGH>,	// valve2
+					  <&gpioc 5  GPIO_ACTIVE_HIGH>,	
+					  <&gpioc 13 GPIO_ACTIVE_HIGH>,
+					  <&gpioc 14 GPIO_ACTIVE_HIGH>,
+					  <&gpioc 15 GPIO_ACTIVE_HIGH>,
+					  <&gpioc 4  GPIO_ACTIVE_HIGH>,	// valve7
+					  <&gpioa 5  GPIO_ACTIVE_HIGH>,
+					  <&gpioa 4  GPIO_ACTIVE_HIGH>,
+					  <&gpioc 0  GPIO_ACTIVE_HIGH>,	// valve10
+					  <&gpioc 1  GPIO_ACTIVE_HIGH>,
+					  <&gpioc 2  GPIO_ACTIVE_HIGH>,
+					  <&gpioe 8  GPIO_ACTIVE_HIGH>,	// valve13
+					  <&gpioe 10 GPIO_ACTIVE_HIGH>,
+					  <&gpioe 12 GPIO_ACTIVE_HIGH>,
+					  <&gpioe 2  GPIO_ACTIVE_HIGH>,	// valve16
+					  <&gpioe 3  GPIO_ACTIVE_HIGH>,	
+					  <&gpioe 1  GPIO_ACTIVE_HIGH>,
+					  <&gpioe 14 GPIO_ACTIVE_HIGH>,
+					  <&gpioe 15 GPIO_ACTIVE_HIGH>,	// valve20
+					  <&gpiod 15 GPIO_ACTIVE_HIGH>,
+					  <&gpioe 0  GPIO_ACTIVE_HIGH>,
+					  <&gpiob 5  GPIO_ACTIVE_HIGH>,
+					  <&gpioc 12 GPIO_ACTIVE_HIGH>,	// valve24
+					  <&gpioe 4  GPIO_ACTIVE_HIGH>,
+					  <&gpiod 12 GPIO_ACTIVE_HIGH>,
+					  <&gpiod 13 GPIO_ACTIVE_HIGH>,
+					  <&gpioc 11 GPIO_ACTIVE_HIGH>,
+					  <&gpioc 10 GPIO_ACTIVE_HIGH>,	
+					  <&gpioa 12 GPIO_ACTIVE_HIGH>,	// valve30
+					  <&gpioe 6  GPIO_ACTIVE_HIGH>,
+					  <&gpiod 14 GPIO_ACTIVE_HIGH>,
+					  <&gpioe 5  GPIO_ACTIVE_HIGH>,
+					  <&gpioa 1  GPIO_ACTIVE_HIGH>,
+					  <&gpioa 0  GPIO_ACTIVE_HIGH>,
+					  <&gpioc 3  GPIO_ACTIVE_HIGH>;	// valve36
+	};
+};
+
+&pinctrl {
+	usart0_shell: usart0_default {
+		group1 {
+			pinmux = <USART0_TX_PA9>, <USART0_RX_PA10>;
+		};
+	};
+	usart1_console: usart1_default {
+		group1 {
+			pinmux = <USART1_TX_PA2>, <USART1_RX_PA3>;
+		};
+	};
+	usart2_tach: usart2_default {
+		group1 {
+			pinmux = <USART2_TX_PB10>, <USART2_RX_PB11>;
+		};
+	};
+	spi1_default: spi1_default {
+		group1 {
+			pinmux = <SPI1_MISO_PB14>,
+					 <SPI1_MOSI_PB15>,
+					 //  <SPI1_NSS_PB12>,
+					 <SPI1_SCK_PB13>;
+		};
+	};
+	pwm0_default: pwm0_default {
+		group1 {
+			pinmux = <TIMER0_CH0_PE9>,
+			         <TIMER0_CH1_PE11>,
+			         <TIMER0_CH2_PE13>,
+			         <TIMER0_CH3_PA11>;
+		};
+	};
+	pwm2_default: pwm2_default {
+		group1 {
+			pinmux = <TIMER2_CH0_PA6>,
+			         <TIMER2_CH1_PA7>,
+			         <TIMER2_CH2_PB0>,
+			         <TIMER2_CH3_PB1>;
+		};
+	};
+	pwm3_default: pwm3_default {
+		group1 {
+			pinmux = <TIMER3_CH0_PB6>,
+			         <TIMER3_CH1_PB7>,
+			         <TIMER3_CH2_PB8>,
+			         <TIMER3_CH3_PB9>;
+		};
+	};
+	pwm7_default: pwm7_default {
+		group1 {
+			pinmux = <TIMER7_CH0_PC6>,    // fan1
+			<TIMER7_CH1_PC7>,    // fan2
+			<TIMER7_CH2_PC8>;     // servo
+		};
+	};
+
+};
+&usart0 {
+	status = "okay";
+	current-speed = <115200>;
+	pinctrl-0 = <&usart0_shell>;
+	pinctrl-names = "default";
+};
+
+&usart1 {
+	status = "okay";
+	current-speed = <921600>;
+	pinctrl-0 = <&usart1_console>;
+	pinctrl-names = "default";
+};
+
+&usart2 {
+	status = "okay";
+	current-speed = <115200>;
+	pinctrl-0 = <&usart2_tach>;
+	pinctrl-names = "default";
+};
+
+&gpioa {
+	status = "okay";
+};
+
+&gpiob {
+	status = "okay";
+};
+
+&gpioc {
+	status = "okay";
+};
+
+&gpiod {
+	status = "okay";
+};
+
+&gpioe {
+	status = "okay";
+};
+
+&spi1 {
+	status = "okay";
+	pinctrl-0 = <&spi1_default>;
+	pinctrl-names = "default";
+	cs-gpios = <&gpiod 0 GPIO_ACTIVE_LOW>,
+	           <&gpiod 1 GPIO_ACTIVE_LOW>,
+	           <&gpiod 2 GPIO_ACTIVE_LOW>,
+	           <&gpiod 3 GPIO_ACTIVE_LOW>,
+	           <&gpiod 4 GPIO_ACTIVE_LOW>,
+	           <&gpiod 5 GPIO_ACTIVE_LOW>,
+	           <&gpiod 8 GPIO_ACTIVE_LOW>,
+	           <&gpiod 9 GPIO_ACTIVE_LOW>,
+	           <&gpiod 10 GPIO_ACTIVE_LOW>,
+	           <&gpiod 11 GPIO_ACTIVE_LOW>,
+	           <&gpiod 6 GPIO_ACTIVE_LOW>,
+	           <&gpiod 7 GPIO_ACTIVE_LOW>;
+
+	sensor0: sensor0@0 {
+		status = "okay";
+		compatible = "us6330-015-s";
+		reg = <0>;
+		spi-max-frequency = <18000000>;
+	};
+	sensor1: sensor1@1 {
+		status = "okay";
+		compatible = "us6330-015-s";
+		reg = <1>;
+		spi-max-frequency = <18000000>;
+	};
+	sensor2: sensor2@2 {
+		status = "okay";
+		compatible = "us6330-015-s";
+		reg = <2>;
+		spi-max-frequency = <18000000>;
+	};
+	sensor3: sensor3@3 {
+		status = "okay";
+		compatible = "us6330-015-s";
+		reg = <3>;
+		spi-max-frequency = <18000000>;
+	};
+	sensor4: sensor4@4 {
+		status = "okay";
+		compatible = "us6330-015-s";
+		reg = <4>;
+		spi-max-frequency = <18000000>;
+	};
+	sensor5: sensor5@5 {
+		status = "okay";
+		compatible = "us6330-015-s";
+		reg = <5>;
+		spi-max-frequency = <18000000>;
+	};
+	sensor6: sensor6@6 {
+		status = "okay";
+		compatible = "us6330-015-s";
+		reg = <6>;
+		spi-max-frequency = <18000000>;
+	};
+	sensor7: sensor7@7 {
+		status = "okay";
+		compatible = "us6330-015-s";
+		reg = <7>;
+		spi-max-frequency = <18000000>;
+	};
+	sensor8: sensor8@8 {
+		status = "okay";
+		compatible = "us6330-015-s";
+		reg = <8>;
+		spi-max-frequency = <18000000>;
+	};
+	sensor9: sensor9@9 {
+		status = "okay";
+		compatible = "us6330-015-s";
+		reg = <9>;
+		spi-max-frequency = <18000000>;
+	};
+	sensor10: sensor10@10 {
+		status = "okay";
+		compatible = "us6330-015-s";
+		reg = <10>;
+		spi-max-frequency = <18000000>;
+	};
+	sensor11: sensor11@11 {
+		status = "okay";
+		compatible = "us6330-015-s";
+		reg = <11>;
+		spi-max-frequency = <18000000>;
+	};
+};
+
+
+&pwm0 {
+	status = "okay";
+	pinctrl-0 = <&pwm0_default>;
+	pinctrl-names = "default";
+};
+
+&pwm2 {
+	status = "okay";
+	pinctrl-0 = <&pwm2_default>;
+	pinctrl-names = "default";
+};
+
+&pwm3 {
+	status = "okay";
+	pinctrl-0 = <&pwm3_default>;
+	pinctrl-names = "default";
+};
+
+&timer7 {
+	status = "okay";
+	pwm7: pwm {
+		status = "okay";
+		pinctrl-0 = <&pwm7_default>;
+		pinctrl-names = "default";
+	};
+};

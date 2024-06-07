@@ -1,0 +1,89 @@
+STM32WB HCI
+###########
+
+Origin:
+   ST Microelectronics
+   https://github.com/STMicroelectronics/STM32CubeWB
+
+Status:
+   version v1.17.0
+
+Purpose:
+   This library is used on stm32wb series to enable HCI communication between
+   a host BLE running on CM-4 STM32WB core and a controller BLE firmware running
+   on CM-0 core.
+
+Description:
+   This library provides an API for shared RAM communication with BLE controller
+   firmware running on STM32WB C-M0 core.
+
+   It is build using  the following files extracted the STM32CubeWB package:
+     Middlewares/ST/STM32_WPAN/ble/core/ble_bufsize.h
+     Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/hw.h
+     Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/shci/shci.c
+     Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/shci/shci.h
+     Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/tl/hci_tl.h
+     Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/tl/mbox_def.h
+     Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/tl/shci_tl_if.c
+     Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/tl/shci_tl.c
+     Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/tl/shci_tl.h
+     Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/tl/tl.h
+     Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/tl/tl_mbox.c
+     Middlewares/ST/STM32_WPAN/stm32_wpan_common.h
+     Middlewares/ST/STM32_WPAN/utilities/dbg_trace.h
+     Middlewares/ST/STM32_WPAN/utilities/stm_list.c
+     Middlewares/ST/STM32_WPAN/utilities/stm_list.h
+     Middlewares/ST/STM32_WPAN/utilities/utilities_common.h
+     Projects/P-NUCLEO-WB55.Nucleo/Applications/BLE/BLE_Hid/Core/Inc/app_common.h
+     Projects/P-NUCLEO-WB55.Nucleo/Applications/BLE/BLE_Hid/Core/Inc/app_conf.h
+     Projects/P-NUCLEO-WB55.Nucleo/Applications/BLE/BLE_Hid/Core/Inc/hw_if.h
+     Projects/P-NUCLEO-WB55.Nucleo/Applications/BLE/BLE_Hid/STM32_WPAN/Target/hw_ipcc.c
+     Projects/P-NUCLEO-WB55.Nucleo/Applications/BLE/BLE_Hid/STM32_WPAN/App/tl_dbg_conf.h
+
+Dependencies:
+   This library depends on STM32Cube IPCC HAL API.
+   It is available in stm32cube/stm32wbxx/drivers
+
+URL:
+   https://github.com/STMicroelectronics/STM32CubeWB
+
+Commit:
+   d23878380596ba031e33fcfa4841ff91aa1ab024
+
+Maintained-by:
+   External
+
+License:
+   BSD-3-Clause
+
+License Link:
+   opensource.org/licenses/BSD-3-Clause
+
+Patch List:
+
+        * Move some files license from ST SLA0044 to BSD-3 Clause
+            Following files are distributed under ST License SLA0044.
+            For Zephyr they are made available under BSD-3 Clause.
+            - hw_if.h
+            - hw_ipcc.c
+            - app_common.h
+            - app_conf.h
+            - stm32_wpan_common.h
+            - ble_bufsize.h
+            - tl_dbg_conf.h
+
+        *  (Z-WB-1) Remove dependency to hw_conf.h
+            This file is not actually needed. Remove inclusion so we don't need
+            to include it in library.
+          Impacted file: app_conf.h
+
+        *  (Z-WB-2) Remove use of useless section SYSTEM_DRIVER_CONTEXT
+            Section has no use. Remove it.
+          Impacted file: shci_tl.c
+
+        *  (Z-WB-3) Inform C-M0 that BLE host should not be used.
+            In case C-M0 binary includes BLE Host, inform that it should not be
+            used as, in Zephyr context, it is  running on C-M4 side.
+          Impacted file: app_conf.h
+
+	* Remove trailing whitespaces

@@ -1,0 +1,150 @@
+C-Driver-MEMS
+#############
+
+Origin:
+   ST Microelectronics
+   https://www.st.com/en/embedded-software/c-driver-mems.html
+
+Status:
+   version v2.3
+
+Purpose:
+   ST Microelectronics standard C platform-independent drivers for MEMS
+   motion and environmental sensors.
+
+Description:
+   This package is an extract (examples have not been retained) of official
+   C-Driver-MEMS package written by ST Microelectronics.
+   It contains standard drivers for STMicroelectronics MEMS sensors to
+   provide a common and stable interface to access sensor registers.
+   For each supported sensor following files are provided:
+
+       - xyz_reg.c: contains the function to read/write 'xyz' sensor registers
+       - xyz_reg.h: contains structures and defines to describe in details
+                    the 'xyz' sensor registers.
+
+   The driver is platform-independent, you only need to define the two
+   functions for read and write transactions from the sensor hardware bus
+   (ie. SPI or I2C). In addition you may define a mdelay (milliseconds) 
+   routine.
+
+   Define in your 'xyz' driver code the read and write functions that use the
+   I2C or SPI platform driver (plus the optional mdelay function) like the following:
+
+   /** Please note that is MANDATORY: return 0 -> no Error.**/
+   int platform_wr(void *handle, u8_t reg, const u8_t *bufp, u16_t len);
+   int platform_rd(void *handle, u8_t reg, u8_t *bufp, u16_t len);
+
+   /** Component optional fields **/
+   void platform_mdelay(u32_t millisec);
+
+
+   stmdev_ctx_t stmdev_ctx = {
+       .read_reg = (stmdev_read_ptr) platform_rd,
+       .write_reg = (stmdev_write_ptr) platform_wr,
+
+       /** Component optional fields **/
+       .mdelay = (stmdev_mdelay_ptr) platform_mdelay,
+   };
+
+   Driver versions in this package:
+
+     - a3g4250d_STdC         v1.1.0
+     - ais25ba_STdC          v1.1.0
+     - ais2dw12_STdC         v1.1.0
+     - ais2ih_STdC           v1.1.0
+     - ais328dq_STdC         v1.1.0
+     - ais3624dq_STdC        v1.1.0
+     - asm330lhb_STdC        v1.0.0
+     - asm330lhh_STdC        v2.1.0
+     - asm330lhhx_STdC       v1.1.1
+     - h3lis100dl_STdC       v1.1.0
+     - h3lis331dl_STdC       v1.1.0
+     - hts221_STdC           v1.1.0
+     - i3g4250d_STdC         v1.1.0
+     - iis2dh_STdC           v1.1.0
+     - iis2dlpc_STdC         v1.1.0
+     - iis2iclx_STdC         v1.1.0
+     - iis2mdc_STdC          v1.1.0
+     - iis328dq_STdC         v1.1.0
+     - iis3dhhc_STdC         v1.1.0
+     - iis3dwb_STdC          v1.1.1
+     - ilps22qs_STdC         v2.1.1
+     - ilps28qsw_STdC        v1.0.1
+     - ism303dac_STdC        v1.1.0
+     - ism330dhcx_STdC       v1.1.0
+     - ism330dlc_STdC        v1.1.0
+     - ism330is_STdC         v2.1.0
+     - l20g20is_STdC         v1.1.0
+     - l3gd20h_STdC          v1.1.0
+     - lis25ba_STdC          v1.1.0
+     - lis2de12_STdC         v1.1.0
+     - lis2dh12_STdC         v1.1.0
+     - lis2dh_STdC           v1.1.0
+     - lis2ds12_STdC         v1.1.0
+     - lis2dtw12_STdC        v1.1.0
+     - lis2du12_STdC         v1.1.3
+     - lis2dux12_STdC        v1.1.4
+     - lis2duxs12_STdC       v1.1.5
+     - lis2dw12_STdC         v1.1.0
+     - lis2hh12_STdC         v1.1.0
+     - lis2mdl_STdC          v1.1.0
+     - lis331dlh_STdC        v1.1.0
+     - lis3de_STdC           v1.1.0
+     - lis3dh_STdC           v1.1.0
+     - lis3dhh_STdC          v1.1.0
+     - lis3dsh_STdC          v1.1.0
+     - lis3mdl_STdC          v1.1.0
+     - lps22ch_STdC          v1.1.0
+     - lps22df_STdC          v1.1.0
+     - lps22hb_STdC          v1.1.0
+     - lps22hh_STdC          v1.1.0
+     - lps25hb_STdC          v1.1.0
+     - lps27hhtw_STdC        v1.1.0
+     - lps27hhw_STdC         v1.1.0
+     - lps28dfw_STdC         v1.1.0
+     - lps33hw_STdC          v1.1.0
+     - lps33k_STdC           v1.1.0
+     - lps33w_STdC           v1.1.0
+     - lsm303agr_STdC        v1.1.0
+     - lsm303ah_STdC         v1.1.0
+     - lsm6ds3_STdC          v1.1.1
+     - lsm6ds3tr-c_STdC      v1.1.0
+     - lsm6dsl_STdC          v1.1.0
+     - lsm6dsm_STdC          v1.1.0
+     - lsm6dso16is_STdC      v2.1.1
+     - lsm6dso32_STdC        v1.1.0
+     - lsm6dso32x_STdC       v1.1.0
+     - lsm6dso_STdC          v2.1.0
+     - lsm6dsox_STdC         v2.0.1
+     - lsm6dsr_STdC          v1.1.0
+     - lsm6dsrx_STdC         v1.1.0
+     - lsm6dsv16bx_STdC      v2.1.2
+     - lsm6dsv16x_STdC       v2.2.1
+     - lsm6dsv_STdC          v1.2.1
+     - lsm9ds1_STdC          v1.1.0
+     - sths34pf80_STdC       v1.0.0
+     - stts22h_STdC          v1.1.0
+     - stts751_STdC          v1.1.0
+
+Dependencies:
+    None.
+
+URL:
+   https://www.st.com/en/embedded-software/c-driver-mems.html
+
+commit:
+   version v2.3
+
+Maintained-by:
+   ST Microelectronics
+
+License:
+   BSD-3-Clause
+
+License Link:
+   https://opensource.org/licenses/BSD-3-Clause
+
+Patch List:
+   * sensor: lsm6dso: Disable -Wmaybe-uninitialized for lsm6dso_mode_set
+     - Modified sensor/stmemsc/lsm6dso_STdC/driver/lsm6dso_reg.c

@@ -1,0 +1,1031 @@
+# 0 "/workdir/zephyr/misc/empty_file.c"
+# 0 "<built-in>"
+# 0 "<command-line>"
+# 1 "/workdir/zephyr/boards/arm/gd32f407v_start/gd32f407v_start.dts" 1
+
+
+
+
+
+/dts-v1/;
+
+# 1 "/workdir/zephyr/dts/arm/gigadevice/gd32f4xx/gd32f407xk.dtsi" 1 3 4
+
+
+
+
+
+
+# 1 "/workdir/zephyr/dts/common/mem.h" 1 3 4
+# 8 "/workdir/zephyr/dts/arm/gigadevice/gd32f4xx/gd32f407xk.dtsi" 2 3 4
+# 1 "/workdir/zephyr/dts/arm/gigadevice/gd32f4xx/gd32f407.dtsi" 1 3 4
+
+
+
+
+
+
+# 1 "/workdir/zephyr/dts/arm/gigadevice/gd32f4xx/gd32f4xx.dtsi" 1 3 4
+
+
+
+
+
+
+# 1 "/workdir/zephyr/dts/arm/armv7-m.dtsi" 1 3 4
+
+
+# 1 "/workdir/zephyr/dts/common/skeleton.dtsi" 1 3 4
+# 9 "/workdir/zephyr/dts/common/skeleton.dtsi" 3 4
+/ {
+ #address-cells = <1>;
+ #size-cells = <1>;
+ chosen { };
+ aliases { };
+};
+# 4 "/workdir/zephyr/dts/arm/armv7-m.dtsi" 2 3 4
+
+/ {
+ soc {
+  #address-cells = <1>;
+  #size-cells = <1>;
+  compatible = "simple-bus";
+  interrupt-parent = <&nvic>;
+  ranges;
+
+  nvic: interrupt-controller@e000e100 {
+   #address-cells = <1>;
+   compatible = "arm,v7m-nvic";
+   reg = <0xe000e100 0xc00>;
+   interrupt-controller;
+   #interrupt-cells = <2>;
+  };
+
+  systick: timer@e000e010 {
+   compatible = "arm,armv7m-systick";
+   reg = <0xe000e010 0x10>;
+  };
+ };
+};
+# 8 "/workdir/zephyr/dts/arm/gigadevice/gd32f4xx/gd32f4xx.dtsi" 2 3 4
+# 1 "/workdir/zephyr/include/zephyr/dt-bindings/adc/adc.h" 1 3 4
+# 9 "/workdir/zephyr/dts/arm/gigadevice/gd32f4xx/gd32f4xx.dtsi" 2 3 4
+# 1 "/workdir/zephyr/include/zephyr/dt-bindings/gpio/gpio.h" 1 3 4
+# 10 "/workdir/zephyr/dts/arm/gigadevice/gd32f4xx/gd32f4xx.dtsi" 2 3 4
+# 1 "/workdir/zephyr/include/zephyr/dt-bindings/i2c/i2c.h" 1 3 4
+# 11 "/workdir/zephyr/dts/arm/gigadevice/gd32f4xx/gd32f4xx.dtsi" 2 3 4
+# 1 "/workdir/zephyr/include/zephyr/dt-bindings/pwm/pwm.h" 1 3 4
+# 12 "/workdir/zephyr/dts/arm/gigadevice/gd32f4xx/gd32f4xx.dtsi" 2 3 4
+# 1 "/workdir/zephyr/include/zephyr/dt-bindings/clock/gd32f4xx-clocks.h" 1 3 4
+# 10 "/workdir/zephyr/include/zephyr/dt-bindings/clock/gd32f4xx-clocks.h" 3 4
+# 1 "/workdir/zephyr/include/zephyr/dt-bindings/clock/gd32-clocks-common.h" 1 3 4
+# 11 "/workdir/zephyr/include/zephyr/dt-bindings/clock/gd32f4xx-clocks.h" 2 3 4
+# 13 "/workdir/zephyr/dts/arm/gigadevice/gd32f4xx/gd32f4xx.dtsi" 2 3 4
+# 1 "/workdir/zephyr/include/zephyr/dt-bindings/reset/gd32f4xx.h" 1 3 4
+# 10 "/workdir/zephyr/include/zephyr/dt-bindings/reset/gd32f4xx.h" 3 4
+# 1 "/workdir/zephyr/include/zephyr/dt-bindings/reset/gd32-common.h" 1 3 4
+# 11 "/workdir/zephyr/include/zephyr/dt-bindings/reset/gd32f4xx.h" 2 3 4
+# 14 "/workdir/zephyr/dts/arm/gigadevice/gd32f4xx/gd32f4xx.dtsi" 2 3 4
+
+/ {
+ cpus {
+  #address-cells = <1>;
+  #size-cells = <0>;
+
+  cpu0: cpu@0 {
+   compatible = "arm,cortex-m4f";
+   reg = <0>;
+   #address-cells = <1>;
+   #size-cells = <1>;
+
+   mpu: mpu@e000ed90 {
+    compatible = "arm,armv7m-mpu";
+    reg = <0xe000ed90 0x40>;
+    arm,num-mpu-regions = <8>;
+   };
+  };
+ };
+
+ soc {
+  sram0: memory@20000000 {
+   compatible = "mmio-sram";
+   reg = <0x20000000 ((112) * 1024)>;
+  };
+
+  rcu: reset-clock-controller@40023800 {
+   compatible = "gd,gd32-rcu";
+   reg = <0x40023800 0x400>;
+   status = "okay";
+
+   cctl: clock-controller {
+    compatible = "gd,gd32-cctl";
+    #clock-cells = <1>;
+    status = "okay";
+   };
+
+   rctl: reset-controller {
+    compatible = "gd,gd32-rctl";
+    #reset-cells = <1>;
+    status = "okay";
+   };
+  };
+
+  fmc: flash-controller@40023c00 {
+   compatible = "gd,gd32-flash-controller";
+   reg = <0x40023c00 0x400>;
+
+   #address-cells = <1>;
+   #size-cells = <1>;
+
+   flash0: flash@8000000 {
+    compatible = "gd,gd32-nv-flash-v3", "soc-nv-flash";
+    write-block-size = <2>;
+    max-erase-time-ms = <8000>;
+   };
+  };
+
+  usart0: usart@40011000 {
+   compatible = "gd,gd32-usart";
+   reg = <0x40011000 0x400>;
+   interrupts = <37 0>;
+   clocks = <&cctl (((0x44U) << 6U) | (4U))>;
+   resets = <&rctl (((0x24U) << 6U) | (4U))>;
+   status = "disabled";
+  };
+
+  usart1: usart@40004400 {
+   compatible = "gd,gd32-usart";
+   reg = <0x40004400 0x400>;
+   interrupts = <38 0>;
+   clocks = <&cctl (((0x40U) << 6U) | (17U))>;
+   resets = <&rctl (((0x20U) << 6U) | (17U))>;
+   status = "disabled";
+  };
+
+  usart2: usart@40004800 {
+   compatible = "gd,gd32-usart";
+   reg = <0x40004800 0x400>;
+   interrupts = <39 0>;
+   clocks = <&cctl (((0x40U) << 6U) | (18U))>;
+   resets = <&rctl (((0x20U) << 6U) | (18U))>;
+   status = "disabled";
+  };
+
+  uart3: usart@40004c00 {
+   compatible = "gd,gd32-usart";
+   reg = <0x40004c00 0x400>;
+   interrupts = <52 0>;
+   clocks = <&cctl (((0x40U) << 6U) | (19U))>;
+   resets = <&rctl (((0x20U) << 6U) | (19U))>;
+   status = "disabled";
+  };
+
+  uart4: usart@40005000 {
+   compatible = "gd,gd32-usart";
+   reg = <0x40005000 0x400>;
+   interrupts = <52 0>;
+   clocks = <&cctl (((0x40U) << 6U) | (20U))>;
+   resets = <&rctl (((0x20U) << 6U) | (20U))>;
+   status = "disabled";
+  };
+
+  usart5: usart@40011400 {
+   compatible = "gd,gd32-usart";
+   reg = <0x40011400 0x400>;
+   interrupts = <71 0>;
+   clocks = <&cctl (((0x44U) << 6U) | (5U))>;
+   resets = <&rctl (((0x24U) << 6U) | (5U))>;
+   status = "disabled";
+  };
+
+  uart6: usart@40007800 {
+   compatible = "gd,gd32-usart";
+   reg = <0x40007800 0x400>;
+   interrupts = <82 0>;
+   clocks = <&cctl (((0x40U) << 6U) | (30U))>;
+   resets = <&rctl (((0x20U) << 6U) | (30U))>;
+   status = "disabled";
+  };
+
+  uart7: usart@40007c00 {
+   compatible = "gd,gd32-usart";
+   reg = <0x40007c00 0x400>;
+   interrupts = <83 0>;
+   clocks = <&cctl (((0x40U) << 6U) | (31U))>;
+   resets = <&rctl (((0x20U) << 6U) | (31U))>;
+   status = "disabled";
+  };
+
+  dac: dac@40007400 {
+   compatible = "gd,gd32-dac";
+   reg = <0x40007400 0x400>;
+   clocks = <&cctl (((0x40U) << 6U) | (29U))>;
+   resets = <&rctl (((0x20U) << 6U) | (29U))>;
+   num-channels = <2>;
+   status = "disabled";
+   #io-channel-cells = <1>;
+  };
+
+  i2c0: i2c@40005400 {
+   compatible = "gd,gd32-i2c";
+   reg = <0x40005400 0x400>;
+   #address-cells = <1>;
+   #size-cells = <0>;
+   clock-frequency = <100000>;
+   interrupts = <31 0>, <32 0>;
+   interrupt-names = "event", "error";
+   clocks = <&cctl (((0x40U) << 6U) | (21U))>;
+   resets = <&rctl (((0x20U) << 6U) | (21U))>;
+   status = "disabled";
+  };
+
+  i2c1: i2c@40005800 {
+   compatible = "gd,gd32-i2c";
+   reg = <0x40005800 0x400>;
+   #address-cells = <1>;
+   #size-cells = <0>;
+   clock-frequency = <100000>;
+   interrupts = <33 0>, <34 0>;
+   interrupt-names = "event", "error";
+   clocks = <&cctl (((0x40U) << 6U) | (22U))>;
+   resets = <&rctl (((0x20U) << 6U) | (22U))>;
+   status = "disabled";
+  };
+
+  i2c2: i2c@40005c00 {
+   compatible = "gd,gd32-i2c";
+   reg = <0x40005c00 0x400>;
+   #address-cells = <1>;
+   #size-cells = <0>;
+   clock-frequency = <100000>;
+   interrupts = <72 0>, <73 0>;
+   interrupt-names = "event", "error";
+   clocks = <&cctl (((0x40U) << 6U) | (23U))>;
+   resets = <&rctl (((0x20U) << 6U) | (23U))>;
+   status = "disabled";
+  };
+
+  spi0: spi@40013000 {
+   compatible = "gd,gd32-spi";
+   reg = <0x40013000 0x400>;
+   interrupts = <35 0>;
+   clocks = <&cctl (((0x44U) << 6U) | (12U))>;
+   resets = <&rctl (((0x24U) << 6U) | (12U))>;
+   status = "disabled";
+   #address-cells = <1>;
+   #size-cells = <0>;
+  };
+
+  spi1: spi@40003800 {
+   compatible = "gd,gd32-spi";
+   reg = <0x40003800 0x400>;
+   interrupts = <36 0>;
+   clocks = <&cctl (((0x40U) << 6U) | (14U))>;
+   resets = <&rctl (((0x20U) << 6U) | (14U))>;
+   status = "disabled";
+   #address-cells = <1>;
+   #size-cells = <0>;
+  };
+
+  spi2: spi@40003c00 {
+   compatible = "gd,gd32-spi";
+   reg = <0x40003c00 0x400>;
+   interrupts = <51 0>;
+   clocks = <&cctl (((0x40U) << 6U) | (15U))>;
+   resets = <&rctl (((0x20U) << 6U) | (15U))>;
+   status = "disabled";
+   #address-cells = <1>;
+   #size-cells = <0>;
+  };
+
+  adc0: adc@40012000 {
+   compatible = "gd,gd32-adc";
+   reg = <0x40012000 0x100>;
+   interrupts = <18 0>;
+   clocks = <&cctl (((0x44U) << 6U) | (8U))>;
+   resets = <&rctl (((0x24U) << 6U) | (8U))>;
+   channels = <16>;
+   status = "disabled";
+   #io-channel-cells = <1>;
+  };
+
+  adc1: adc@40012100 {
+   compatible = "gd,gd32-adc";
+   reg = <0x40012100 0x100>;
+   interrupts = <18 0>;
+   clocks = <&cctl (((0x44U) << 6U) | (9U))>;
+   resets = <&rctl (((0x24U) << 6U) | (9U))>;
+   channels = <16>;
+   status = "disabled";
+   #io-channel-cells = <1>;
+  };
+
+  adc2: adc@40012200 {
+   compatible = "gd,gd32-adc";
+   reg = <0x40012200 0x100>;
+   interrupts = <18 0>;
+   clocks = <&cctl (((0x44U) << 6U) | (10U))>;
+   resets = <&rctl (((0x24U) << 6U) | (10U))>;
+   channels = <16>;
+   status = "disabled";
+   #io-channel-cells = <1>;
+  };
+
+  syscfg: syscfg@40013800 {
+   compatible = "gd,gd32-syscfg";
+   reg = <0x40013800 0x400>;
+   clocks = <&cctl (((0x44U) << 6U) | (14U))>;
+  };
+
+  exti: interrupt-controller@40013c00 {
+   compatible = "gd,gd32-exti";
+   interrupt-controller;
+   #interrupt-cells = <1>;
+   reg = <0x40013c00 0x400>;
+   num-lines = <23>;
+   interrupts = <6 0>, <7 0>, <8 0>, <9 0>, <10 0>, <23 0>,
+         <40 0>;
+   interrupt-names = "line0", "line1", "line2", "line3",
+       "line4", "line5-9", "line10-15";
+   status = "okay";
+  };
+
+  fwdgt: watchdog@40003000 {
+   compatible = "gd,gd32-fwdgt";
+   reg = <0x40003000 0x400>;
+   status = "disabled";
+  };
+
+  wwdgt: watchdog@40002c00 {
+   compatible = "gd,gd32-wwdgt";
+   reg = <0x40002C00 0x400>;
+   clocks = <&cctl (((0x40U) << 6U) | (11U))>;
+   resets = <&rctl (((0x20U) << 6U) | (11U))>;
+   interrupts = <0 0>;
+   status = "disabled";
+  };
+
+  pinctrl: pin-controller@40020000 {
+   compatible = "gd,gd32-pinctrl-af";
+   reg = <0x40020000 0x2400>;
+   #address-cells = <1>;
+   #size-cells = <1>;
+   status = "okay";
+
+   gpioa: gpio@40020000 {
+    compatible = "gd,gd32-gpio";
+    gpio-controller;
+    #gpio-cells = <2>;
+    reg = <0x40020000 0x400>;
+    clocks = <&cctl (((0x30U) << 6U) | (0U))>;
+    resets = <&rctl (((0x10U) << 6U) | (0U))>;
+    status = "disabled";
+   };
+
+   gpiob: gpio@40020400 {
+    compatible = "gd,gd32-gpio";
+    gpio-controller;
+    #gpio-cells = <2>;
+    reg = <0x40020400 0x400>;
+    clocks = <&cctl (((0x30U) << 6U) | (1U))>;
+    resets = <&rctl (((0x10U) << 6U) | (1U))>;
+    status = "disabled";
+   };
+
+   gpioc: gpio@40020800 {
+    compatible = "gd,gd32-gpio";
+    gpio-controller;
+    #gpio-cells = <2>;
+    reg = <0x40020800 0x400>;
+    clocks = <&cctl (((0x30U) << 6U) | (2U))>;
+    resets = <&rctl (((0x10U) << 6U) | (2U))>;
+    status = "disabled";
+   };
+
+   gpiod: gpio@40020c00 {
+    compatible = "gd,gd32-gpio";
+    gpio-controller;
+    #gpio-cells = <2>;
+    reg = <0x40020c00 0x400>;
+    clocks = <&cctl (((0x30U) << 6U) | (3U))>;
+    resets = <&rctl (((0x10U) << 6U) | (3U))>;
+    status = "disabled";
+   };
+
+   gpioe: gpio@40021000 {
+    compatible = "gd,gd32-gpio";
+    gpio-controller;
+    #gpio-cells = <2>;
+    reg = <0x40021000 0x400>;
+    clocks = <&cctl (((0x30U) << 6U) | (4U))>;
+    resets = <&rctl (((0x10U) << 6U) | (4U))>;
+    status = "disabled";
+   };
+
+   gpiof: gpio@40021400 {
+    compatible = "gd,gd32-gpio";
+    gpio-controller;
+    #gpio-cells = <2>;
+    reg = <0x40021400 0x400>;
+    clocks = <&cctl (((0x30U) << 6U) | (5U))>;
+    resets = <&rctl (((0x10U) << 6U) | (5U))>;
+    status = "disabled";
+   };
+
+   gpiog: gpio@40021800 {
+    compatible = "gd,gd32-gpio";
+    gpio-controller;
+    #gpio-cells = <2>;
+    reg = <0x40021800 0x400>;
+    clocks = <&cctl (((0x30U) << 6U) | (6U))>;
+    resets = <&rctl (((0x10U) << 6U) | (6U))>;
+    status = "disabled";
+   };
+
+   gpioh: gpio@40021c00 {
+    compatible = "gd,gd32-gpio";
+    gpio-controller;
+    #gpio-cells = <2>;
+    reg = <0x40021c00 0x400>;
+    clocks = <&cctl (((0x30U) << 6U) | (7U))>;
+    resets = <&rctl (((0x10U) << 6U) | (7U))>;
+    status = "disabled";
+   };
+
+   gpioi: gpio@40022000 {
+    compatible = "gd,gd32-gpio";
+    gpio-controller;
+    #gpio-cells = <2>;
+    reg = <0x40022000 0x400>;
+    clocks = <&cctl (((0x30U) << 6U) | (8U))>;
+    resets = <&rctl (((0x10U) << 6U) | (8U))>;
+    status = "disabled";
+   };
+  };
+
+  timer0: timer@40010000 {
+   compatible = "gd,gd32-timer";
+   reg = <0x40010000 0x400>;
+   interrupts = <24 0>, <25 0>, <26 0>, <27 0>;
+   interrupt-names = "brk", "up", "trgcom", "cc";
+   clocks = <&cctl (((0x44U) << 6U) | (0U))>;
+   resets = <&rctl (((0x24U) << 6U) | (0U))>;
+   is-advanced;
+   channels = <4>;
+   status = "disabled";
+
+   pwm0: pwm {
+    compatible = "gd,gd32-pwm";
+    status = "disabled";
+    #pwm-cells = <3>;
+   };
+  };
+
+  timer1: timer@40000000 {
+   compatible = "gd,gd32-timer";
+   reg = <0x40000000 0x400>;
+   interrupts = <28 0>;
+   interrupt-names = "global";
+   clocks = <&cctl (((0x40U) << 6U) | (0U))>;
+   resets = <&rctl (((0x20U) << 6U) | (0U))>;
+   is-32bit;
+   channels = <4>;
+   status = "disabled";
+
+   pwm1: pwm {
+    compatible = "gd,gd32-pwm";
+    status = "disabled";
+    #pwm-cells = <3>;
+   };
+  };
+
+  timer2: timer@40000400 {
+   compatible = "gd,gd32-timer";
+   reg = <0x40000400 0x400>;
+   interrupts = <29 0>;
+   interrupt-names = "global";
+   clocks = <&cctl (((0x40U) << 6U) | (1U))>;
+   resets = <&rctl (((0x20U) << 6U) | (1U))>;
+   channels = <4>;
+   status = "disabled";
+
+   pwm2: pwm {
+    compatible = "gd,gd32-pwm";
+    status = "disabled";
+    #pwm-cells = <3>;
+   };
+  };
+
+  timer3: timer@40000800 {
+   compatible = "gd,gd32-timer";
+   reg = <0x40000800 0x400>;
+   interrupts = <30 0>;
+   interrupt-names = "global";
+   clocks = <&cctl (((0x40U) << 6U) | (2U))>;
+   resets = <&rctl (((0x20U) << 6U) | (2U))>;
+   channels = <4>;
+   status = "disabled";
+
+   pwm3: pwm {
+    compatible = "gd,gd32-pwm";
+    status = "disabled";
+    #pwm-cells = <3>;
+   };
+  };
+
+  timer4: timer@40000c00 {
+   compatible = "gd,gd32-timer";
+   reg = <0x40000c00 0x400>;
+   interrupts = <50 0>;
+   interrupt-names = "global";
+   clocks = <&cctl (((0x40U) << 6U) | (3U))>;
+   resets = <&rctl (((0x20U) << 6U) | (3U))>;
+   is-32bit;
+   channels = <4>;
+   status = "disabled";
+
+   pwm4: pwm {
+    compatible = "gd,gd32-pwm";
+    status = "disabled";
+    #pwm-cells = <3>;
+   };
+  };
+
+  timer5: timer@40001000 {
+   compatible = "gd,gd32-timer";
+   reg = <0x40001000 0x400>;
+   interrupts = <54 0>;
+   interrupt-names = "global";
+   clocks = <&cctl (((0x40U) << 6U) | (4U))>;
+   resets = <&rctl (((0x20U) << 6U) | (4U))>;
+   channels = <0>;
+   status = "disabled";
+  };
+
+  timer6: timer@40001400 {
+   compatible = "gd,gd32-timer";
+   reg = <0x40001400 0x400>;
+   interrupts = <55 0>;
+   interrupt-names = "global";
+   clocks = <&cctl (((0x40U) << 6U) | (5U))>;
+   resets = <&rctl (((0x20U) << 6U) | (5U))>;
+   channels = <0>;
+   status = "disabled";
+  };
+
+  timer7: timer@40010400 {
+   compatible = "gd,gd32-timer";
+   reg = <0x40010400 0x400>;
+   interrupts = <43 0>, <44 0>, <45 0>, <46 0>;
+   interrupt-names = "brk", "up", "trgcom", "cc";
+   clocks = <&cctl (((0x44U) << 6U) | (1U))>;
+   resets = <&rctl (((0x24U) << 6U) | (1U))>;
+   is-advanced;
+   channels = <4>;
+   status = "disabled";
+
+   pwm {
+    compatible = "gd,gd32-pwm";
+    status = "disabled";
+    #pwm-cells = <3>;
+   };
+  };
+
+  timer8: timer@40014000 {
+   compatible = "gd,gd32-timer";
+   reg = <0x40014000 0x400>;
+   interrupts = <24 0>;
+   interrupt-names = "global";
+   clocks = <&cctl (((0x44U) << 6U) | (16U))>;
+   resets = <&rctl (((0x24U) << 6U) | (16U))>;
+   channels = <2>;
+   status = "disabled";
+
+   pwm {
+    compatible = "gd,gd32-pwm";
+    status = "disabled";
+    #pwm-cells = <3>;
+   };
+  };
+
+  timer9: timer@40014400 {
+   compatible = "gd,gd32-timer";
+   reg = <0x40014400 0x400>;
+   interrupts = <25 0>;
+   interrupt-names = "global";
+   clocks = <&cctl (((0x44U) << 6U) | (17U))>;
+   resets = <&rctl (((0x24U) << 6U) | (17U))>;
+   channels = <1>;
+   status = "disabled";
+
+   pwm {
+    compatible = "gd,gd32-pwm";
+    status = "disabled";
+    #pwm-cells = <3>;
+   };
+  };
+
+  timer10: timer@40014800 {
+   compatible = "gd,gd32-timer";
+   reg = <0x40014800 0x400>;
+   interrupts = <26 0>;
+   interrupt-names = "global";
+   clocks = <&cctl (((0x44U) << 6U) | (18U))>;
+   resets = <&rctl (((0x24U) << 6U) | (18U))>;
+   channels = <1>;
+   status = "disabled";
+
+   pwm {
+    compatible = "gd,gd32-pwm";
+    status = "disabled";
+    #pwm-cells = <3>;
+   };
+  };
+
+  timer11: timer@40001800 {
+   compatible = "gd,gd32-timer";
+   reg = <0x40001800 0x400>;
+   interrupts = <43 0>;
+   interrupt-names = "global";
+   clocks = <&cctl (((0x40U) << 6U) | (6U))>;
+   resets = <&rctl (((0x20U) << 6U) | (6U))>;
+   channels = <2>;
+   status = "disabled";
+
+   pwm {
+    compatible = "gd,gd32-pwm";
+    status = "disabled";
+    #pwm-cells = <3>;
+   };
+  };
+
+  timer12: timer@40001c00 {
+   compatible = "gd,gd32-timer";
+   reg = <0x40001c00 0x400>;
+   interrupts = <44 0>;
+   interrupt-names = "global";
+   clocks = <&cctl (((0x40U) << 6U) | (7U))>;
+   resets = <&rctl (((0x20U) << 6U) | (7U))>;
+   channels = <1>;
+   status = "disabled";
+
+   pwm {
+    compatible = "gd,gd32-pwm";
+    status = "disabled";
+    #pwm-cells = <3>;
+   };
+  };
+
+  timer13: timer@40002000 {
+   compatible = "gd,gd32-timer";
+   reg = <0x40002000 0x400>;
+   interrupts = <45 0>;
+   interrupt-names = "global";
+   clocks = <&cctl (((0x40U) << 6U) | (8U))>;
+   resets = <&rctl (((0x20U) << 6U) | (8U))>;
+   channels = <1>;
+   status = "disabled";
+
+   pwm {
+    compatible = "gd,gd32-pwm";
+    status = "disabled";
+    #pwm-cells = <3>;
+   };
+  };
+
+  dma0: dma@40026000 {
+   compatible = "gd,gd32-dma-v1";
+   reg = <0x40026000 0x400>;
+   interrupts = <11 0>, <12 0>, <13 0>, <14 0>,
+         <15 0>, <16 0>, <17 0>, <47 0>;
+   clocks = <&cctl (((0x30U) << 6U) | (21U))>;
+   resets = <&rctl (((0x10U) << 6U) | (21U))>;
+   dma-channels = <8>;
+   gd,mem2mem;
+   #dma-cells = <4>;
+   status = "disabled";
+  };
+
+  dma1: dma@40026400 {
+   compatible = "gd,gd32-dma-v1";
+   reg = <0x40026400 0x400>;
+   interrupts = <56 0>, <57 0>, <58 0>, <59 0>,
+         <60 0>, <68 0>, <69 0>, <70 0>;
+   clocks = <&cctl (((0x30U) << 6U) | (22U))>;
+   resets = <&rctl (((0x10U) << 6U) | (22U))>;
+   dma-channels = <8>;
+   gd,mem2mem;
+   #dma-cells = <4>;
+   status = "disabled";
+  };
+ };
+};
+
+&nvic {
+ arm,num-irq-priority-bits = <4>;
+};
+# 8 "/workdir/zephyr/dts/arm/gigadevice/gd32f4xx/gd32f407.dtsi" 2 3 4
+
+&cpu0 {
+ clock-frequency = <168000000>;
+};
+# 9 "/workdir/zephyr/dts/arm/gigadevice/gd32f4xx/gd32f407xk.dtsi" 2 3 4
+
+&flash0 {
+ reg = <0x08000000 ((3072) * 1024)>;
+};
+# 9 "/workdir/zephyr/boards/arm/gd32f407v_start/gd32f407v_start.dts" 2
+# 1 "/workdir/zephyr/boards/arm/gd32f407v_start/gd32f407v_start-pinctrl.dtsi" 1
+
+
+
+
+
+# 1 "/workdir/modules/hal/gigadevice/include/dt-bindings/pinctrl/gd32f405z(e-g-k)xx-pinctrl.h" 1 3 4
+
+
+
+
+
+
+# 1 "/workdir/modules/hal/gigadevice/include/dt-bindings/pinctrl/gd32-af.h" 1 3 4
+# 8 "/workdir/modules/hal/gigadevice/include/dt-bindings/pinctrl/gd32f405z(e-g-k)xx-pinctrl.h" 2 3 4
+# 7 "/workdir/zephyr/boards/arm/gd32f407v_start/gd32f407v_start-pinctrl.dtsi" 2
+# 10 "/workdir/zephyr/boards/arm/gd32f407v_start/gd32f407v_start.dts" 2
+# 1 "/workdir/zephyr/include/zephyr/dt-bindings/input/input-event-codes.h" 1 3 4
+# 11 "/workdir/zephyr/boards/arm/gd32f407v_start/gd32f407v_start.dts" 2
+# 0 "<command-line>" 2
+# 1 "/workdir/pneumatic-control-device/boards/gd32f407v_start.overlay" 1
+/ {
+ model = "GigaDevice GD32F407V-START";
+ compatible = "gd,gd32f407v-start";
+
+ chosen {
+  zephyr,sram = &sram0;
+  zephyr,flash = &flash0;
+  zephyr,console = &usart0;
+  zephyr,shell-uart = &usart0;
+ };
+ aliases {
+  uart1 = &usart1;
+  uart2 = &usart2;
+ };
+ air-valve {
+  compatible = "air,valve";
+  valve-gpios = <&gpioe 7 (0 << 0)>,
+                <&gpiob 2 (0 << 0)>,
+       <&gpioc 5 (0 << 0)>,
+       <&gpioc 13 (0 << 0)>,
+       <&gpioc 14 (0 << 0)>,
+       <&gpioc 15 (0 << 0)>,
+       <&gpioc 4 (0 << 0)>,
+       <&gpioa 5 (0 << 0)>,
+       <&gpioa 4 (0 << 0)>,
+       <&gpioc 0 (0 << 0)>,
+       <&gpioc 1 (0 << 0)>,
+       <&gpioc 2 (0 << 0)>,
+       <&gpioe 8 (0 << 0)>,
+       <&gpioe 10 (0 << 0)>,
+       <&gpioe 12 (0 << 0)>,
+       <&gpioe 2 (0 << 0)>,
+       <&gpioe 3 (0 << 0)>,
+       <&gpioe 1 (0 << 0)>,
+       <&gpioe 14 (0 << 0)>,
+       <&gpioe 15 (0 << 0)>,
+       <&gpiod 15 (0 << 0)>,
+       <&gpioe 0 (0 << 0)>,
+       <&gpiob 5 (0 << 0)>,
+       <&gpioc 12 (0 << 0)>,
+       <&gpioe 4 (0 << 0)>,
+       <&gpiod 12 (0 << 0)>,
+       <&gpiod 13 (0 << 0)>,
+       <&gpioc 11 (0 << 0)>,
+       <&gpioc 10 (0 << 0)>,
+       <&gpioa 12 (0 << 0)>,
+       <&gpioe 6 (0 << 0)>,
+       <&gpiod 14 (0 << 0)>,
+       <&gpioe 5 (0 << 0)>,
+       <&gpioa 1 (0 << 0)>,
+       <&gpioa 0 (0 << 0)>,
+       <&gpioc 3 (0 << 0)>;
+ };
+};
+
+&pinctrl {
+ usart0_shell: usart0_default {
+  group1 {
+   pinmux = <((((('A') - 'A') & 0xFU) << 0U) | (((9) & 0xFU) << 4U) | (((7U) & 0x1FU) << 8U))>, <((((('A') - 'A') & 0xFU) << 0U) | (((10) & 0xFU) << 4U) | (((7U) & 0x1FU) << 8U))>;
+  };
+ };
+ usart1_console: usart1_default {
+  group1 {
+   pinmux = <((((('A') - 'A') & 0xFU) << 0U) | (((2) & 0xFU) << 4U) | (((7U) & 0x1FU) << 8U))>, <((((('A') - 'A') & 0xFU) << 0U) | (((3) & 0xFU) << 4U) | (((7U) & 0x1FU) << 8U))>;
+  };
+ };
+ usart2_tach: usart2_default {
+  group1 {
+   pinmux = <((((('B') - 'A') & 0xFU) << 0U) | (((10) & 0xFU) << 4U) | (((7U) & 0x1FU) << 8U))>, <((((('B') - 'A') & 0xFU) << 0U) | (((11) & 0xFU) << 4U) | (((7U) & 0x1FU) << 8U))>;
+  };
+ };
+ spi1_default: spi1_default {
+  group1 {
+   pinmux = <((((('B') - 'A') & 0xFU) << 0U) | (((14) & 0xFU) << 4U) | (((5U) & 0x1FU) << 8U))>,
+      <((((('B') - 'A') & 0xFU) << 0U) | (((15) & 0xFU) << 4U) | (((5U) & 0x1FU) << 8U))>,
+
+      <((((('B') - 'A') & 0xFU) << 0U) | (((13) & 0xFU) << 4U) | (((5U) & 0x1FU) << 8U))>;
+  };
+ };
+ pwm0_default: pwm0_default {
+  group1 {
+   pinmux = <((((('E') - 'A') & 0xFU) << 0U) | (((9) & 0xFU) << 4U) | (((1U) & 0x1FU) << 8U))>,
+            <((((('E') - 'A') & 0xFU) << 0U) | (((11) & 0xFU) << 4U) | (((1U) & 0x1FU) << 8U))>,
+            <((((('E') - 'A') & 0xFU) << 0U) | (((13) & 0xFU) << 4U) | (((1U) & 0x1FU) << 8U))>,
+            <((((('A') - 'A') & 0xFU) << 0U) | (((11) & 0xFU) << 4U) | (((1U) & 0x1FU) << 8U))>;
+  };
+ };
+ pwm2_default: pwm2_default {
+  group1 {
+   pinmux = <((((('A') - 'A') & 0xFU) << 0U) | (((6) & 0xFU) << 4U) | (((2U) & 0x1FU) << 8U))>,
+            <((((('A') - 'A') & 0xFU) << 0U) | (((7) & 0xFU) << 4U) | (((2U) & 0x1FU) << 8U))>,
+            <((((('B') - 'A') & 0xFU) << 0U) | (((0) & 0xFU) << 4U) | (((2U) & 0x1FU) << 8U))>,
+            <((((('B') - 'A') & 0xFU) << 0U) | (((1) & 0xFU) << 4U) | (((2U) & 0x1FU) << 8U))>;
+  };
+ };
+ pwm3_default: pwm3_default {
+  group1 {
+   pinmux = <((((('B') - 'A') & 0xFU) << 0U) | (((6) & 0xFU) << 4U) | (((2U) & 0x1FU) << 8U))>,
+            <((((('B') - 'A') & 0xFU) << 0U) | (((7) & 0xFU) << 4U) | (((2U) & 0x1FU) << 8U))>,
+            <((((('B') - 'A') & 0xFU) << 0U) | (((8) & 0xFU) << 4U) | (((2U) & 0x1FU) << 8U))>,
+            <((((('B') - 'A') & 0xFU) << 0U) | (((9) & 0xFU) << 4U) | (((2U) & 0x1FU) << 8U))>;
+  };
+ };
+ pwm7_default: pwm7_default {
+  group1 {
+   pinmux = <((((('C') - 'A') & 0xFU) << 0U) | (((6) & 0xFU) << 4U) | (((3U) & 0x1FU) << 8U))>,
+   <((((('C') - 'A') & 0xFU) << 0U) | (((7) & 0xFU) << 4U) | (((3U) & 0x1FU) << 8U))>,
+   <((((('C') - 'A') & 0xFU) << 0U) | (((8) & 0xFU) << 4U) | (((3U) & 0x1FU) << 8U))>;
+  };
+ };
+
+};
+&usart0 {
+ status = "okay";
+ current-speed = <115200>;
+ pinctrl-0 = <&usart0_shell>;
+ pinctrl-names = "default";
+};
+
+&usart1 {
+ status = "okay";
+ current-speed = <921600>;
+ pinctrl-0 = <&usart1_console>;
+ pinctrl-names = "default";
+};
+
+&usart2 {
+ status = "okay";
+ current-speed = <115200>;
+ pinctrl-0 = <&usart2_tach>;
+ pinctrl-names = "default";
+};
+
+&gpioa {
+ status = "okay";
+};
+
+&gpiob {
+ status = "okay";
+};
+
+&gpioc {
+ status = "okay";
+};
+
+&gpiod {
+ status = "okay";
+};
+
+&gpioe {
+ status = "okay";
+};
+
+&spi1 {
+ status = "okay";
+ pinctrl-0 = <&spi1_default>;
+ pinctrl-names = "default";
+ cs-gpios = <&gpiod 0 (1 << 0)>,
+            <&gpiod 1 (1 << 0)>,
+            <&gpiod 2 (1 << 0)>,
+            <&gpiod 3 (1 << 0)>,
+            <&gpiod 4 (1 << 0)>,
+            <&gpiod 5 (1 << 0)>,
+            <&gpiod 8 (1 << 0)>,
+            <&gpiod 9 (1 << 0)>,
+            <&gpiod 10 (1 << 0)>,
+            <&gpiod 11 (1 << 0)>,
+            <&gpiod 6 (1 << 0)>,
+            <&gpiod 7 (1 << 0)>;
+
+ sensor0: sensor0@0 {
+  status = "okay";
+  compatible = "us6330-015-s";
+  reg = <0>;
+  spi-max-frequency = <18000000>;
+ };
+ sensor1: sensor1@1 {
+  status = "okay";
+  compatible = "us6330-015-s";
+  reg = <1>;
+  spi-max-frequency = <18000000>;
+ };
+ sensor2: sensor2@2 {
+  status = "okay";
+  compatible = "us6330-015-s";
+  reg = <2>;
+  spi-max-frequency = <18000000>;
+ };
+ sensor3: sensor3@3 {
+  status = "okay";
+  compatible = "us6330-015-s";
+  reg = <3>;
+  spi-max-frequency = <18000000>;
+ };
+ sensor4: sensor4@4 {
+  status = "okay";
+  compatible = "us6330-015-s";
+  reg = <4>;
+  spi-max-frequency = <18000000>;
+ };
+ sensor5: sensor5@5 {
+  status = "okay";
+  compatible = "us6330-015-s";
+  reg = <5>;
+  spi-max-frequency = <18000000>;
+ };
+ sensor6: sensor6@6 {
+  status = "okay";
+  compatible = "us6330-015-s";
+  reg = <6>;
+  spi-max-frequency = <18000000>;
+ };
+ sensor7: sensor7@7 {
+  status = "okay";
+  compatible = "us6330-015-s";
+  reg = <7>;
+  spi-max-frequency = <18000000>;
+ };
+ sensor8: sensor8@8 {
+  status = "okay";
+  compatible = "us6330-015-s";
+  reg = <8>;
+  spi-max-frequency = <18000000>;
+ };
+ sensor9: sensor9@9 {
+  status = "okay";
+  compatible = "us6330-015-s";
+  reg = <9>;
+  spi-max-frequency = <18000000>;
+ };
+ sensor10: sensor10@10 {
+  status = "okay";
+  compatible = "us6330-015-s";
+  reg = <10>;
+  spi-max-frequency = <18000000>;
+ };
+ sensor11: sensor11@11 {
+  status = "okay";
+  compatible = "us6330-015-s";
+  reg = <11>;
+  spi-max-frequency = <18000000>;
+ };
+};
+
+
+&pwm0 {
+ status = "okay";
+ pinctrl-0 = <&pwm0_default>;
+ pinctrl-names = "default";
+};
+
+&pwm2 {
+ status = "okay";
+ pinctrl-0 = <&pwm2_default>;
+ pinctrl-names = "default";
+};
+
+&pwm3 {
+ status = "okay";
+ pinctrl-0 = <&pwm3_default>;
+ pinctrl-names = "default";
+};
+
+&timer7 {
+ status = "okay";
+ pwm7: pwm {
+  status = "okay";
+  pinctrl-0 = <&pwm7_default>;
+  pinctrl-names = "default";
+ };
+};
+# 0 "<command-line>" 2
+# 1 "/workdir/zephyr/misc/empty_file.c"

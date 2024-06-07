@@ -1,0 +1,35 @@
+# SPDX-License-Identifier: BSD-3-Clause
+
+menu "Drivers"
+
+rsource "intel/Kconfig"
+
+rsource "dw/Kconfig"
+
+rsource "imx/Kconfig"
+
+rsource "mediatek/Kconfig"
+
+config DUMMY_DMA
+	bool "Dummy DMA (software DMA driver)"
+	default n
+	depends on HOST_PTABLE
+	help
+	  Select this to enable the software-based host DMA implementation.
+	  This driver does all the transfers between host memory and DSP local
+	  buffer memory using regular memcpy. It requires direct access to the
+	  host memory.
+
+	  If unsure, select "n".
+
+config IPC_POLLING
+	bool "Enable IPC Polling support"
+	default n
+	help
+	  Select this to enable support for simple IPC polling. This allows
+	  users like GDB and boot loader a simple IPC mechanism that does not
+	  depend on IRQ or a scheduler.
+
+	  If unsure, select "n".
+
+endmenu # "Drivers"

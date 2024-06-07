@@ -1,0 +1,53 @@
+STM32CubeMP1
+###########
+
+Origin:
+   ST Microelectronics
+   https://github.com/STMicroelectronics/STM32CubeMP1
+
+Status:
+   version 1.6.0
+
+Purpose:
+   ST Microelectronics official MCU package for STM32MP1 series.
+
+Description:
+   This package is an extract of official STM32CubeMP1 package written by ST Microelectronics.
+   It is composed of STM32Cube hardware abstraction layer (HAL) and low layer (LL) plus a set
+   of CMSIS headers files, one for each SoC in STM32MP1 series.
+
+Dependencies:
+    None.
+
+URL:
+   https://github.com/STMicroelectronics/STM32CubeMP1
+
+Commit:
+   b9a31179d5bf80b3958c3653153bfd4c3a7fc5d5
+
+Maintained-by:
+   External
+
+License:
+   BSD-3-Clause
+
+License Link:
+   https://opensource.org/licenses/BSD-3-Clause
+
+Patch List:
+
+   *Changes from official delivery:
+    -dos2unix applied
+    -trailing white spaces removed
+
+   *Provision to enable hal & ll asserts added
+    -Modified stm32cube/stm32mp1xx/drivers/include/stm32_assert.h
+
+   *Wrap define UNUSED with an ifndef
+     This will prevent a compiler warning for the case the UNUSED macro
+     is already defined elsewhere in the project
+     Impacted files:
+      drivers/include/stm32mp1xx_hal_def.h
+     ST Internal Reference: 136825
+
+   See release_note.html from STM32Cube

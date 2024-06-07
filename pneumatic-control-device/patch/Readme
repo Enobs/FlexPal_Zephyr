@@ -1,0 +1,8 @@
+0001-delete-dts-config.patch
+brief: delete zephyr os hardware config for gd32f407. Use .overlay to manage hardware in a unified manner
+
+0001-modify-hardware-clock.patch
+brief: modify Modify the default hardware crystal size
+
+0001-modify-timer0-pinctrl.patch
+brief: modify gd32f407 time0 pinctrl af-gpio

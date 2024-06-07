@@ -1,0 +1,10 @@
+/*
+ * Copyright (c) 2022, TOKITA Hiroshi <tokita.hiroshi@gmail.com>
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/dts-v1/;
+
+#include <gigadevice/gd32f4xx/gd32f407xk.dtsi>
+#include "gd32f407v_start-pinctrl.dtsi"
+#include <zephyr/dt-bindings/input/input-event-codes.h>

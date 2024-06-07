@@ -1,0 +1,67 @@
+MCUXpresso SDK
+##############
+
+Origin:
+   NXP MCUXpresso SDK
+   https://github.com/NXPmicro/mcux-sdk
+
+   NXP Kinetis Connectivity Software
+   https://www.nxp.com/webapp/Download?colCode=KW40Z-CONNECTIVITY-SOFTWARE&appType=license&Parent_nodeId=1432854896956716810497&Parent_pageType=product
+   https://www.nxp.com/webapp/Download?colCode=MKW2XD-MRC20A-CONNECTIVITY-SW&appType=license&Parent_nodeId=1425322332576706617013&Parent_pageType=productI
+
+   NXP MCUXpresso SDK USB
+   https://github.com/NXPmicro/mcux-sdk-middleware-usb
+
+Status:
+   Some older Kinetis W family SoCs are not supported in MCUXpresso SDK, but
+   instead are supported by the Kinetis Connectivity Software. This
+   distribution is based on the same Kinetis SDK (ksdk) that MCUXpresso SDK
+   evolved from. These older SoCs have many of the same peripherals as KW41Z,
+   so we can reuse newer MCUXpresso SDK drivers from KW41Z, and import only the
+   SoC header files from the Kinetis Connectivity Software.
+
+   SoC		Version (Release Date)
+   ----------------------------------------------------------------------------
+   MCR20A	1.0.0
+   MKW20Z4	1.0.1 (2015-12-10)
+   MKW30Z4	1.0.1 (2015-12-10)
+   MKW40Z4	1.0.1 (2015-12-10)
+
+Purpose:
+   Provides device header files and bare metal peripheral drivers for Kinetis,
+   LPC, and i.MX SoCs. Zephyr shim drivers are built on top of these imported
+   drivers to adapt the MCUXpresso SDK APIs to Zephyr APIs.
+
+Description:
+    This package is cloned from the Github for mcux-sdk. The cloned package is then copied and committ'ed
+    into NXP's Zephyr HAL. Care should be taken to retain local changes to the SDK files that are documented
+    in Patch List section of the document.
+
+Dependencies:
+   CMSIS header files
+
+URL:
+   https://github.com/NXPmicro/mcux-sdk
+   https://www.nxp.com/webapp/Download?colCode=KW40Z-CONNECTIVITY-SOFTWARE&appType=license&Parent_nodeId=1432854896956716810497&Parent_pageType=product
+   https://www.nxp.com/webapp/Download?colCode=MKW2XD-MRC20A-CONNECTIVITY-SW&appType=license&Parent_nodeId=1425322332576706617013&Parent_pageType=productI
+
+commit:
+   N/A
+
+Maintained-by:
+   External
+
+License:
+   BSD-3-Clause
+
+License Link:
+   https://spdx.org/licenses/BSD-3-Clause.html
+
+Patch List:
+  1. Delete the .a binary archive files after an SDK update before committing the changes. These files are still present in the SDK github repo but have been
+     deleted from the Zephyr HAL
+  2. mcux-sdk/drivers/caam/fsl_caam.c: Move used job descriptors in the CAAM driver from the stack to noncacheable section. At time of writing, there should
+     be four being used for entropy in zephyr.
+  3. fsl_common.h: add #ifdef ZEPHYR #endif to include Zephyr's sys utils
+  4. mcux-sdk/drivers/pit/fsl_pit.c: add guards to avoid compilation warnings when building
+     with SDK clock control driver disabled.

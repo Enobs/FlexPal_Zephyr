@@ -1,0 +1,104 @@
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#  http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+
+config ZSL
+	bool "Zephyr scientific library support"
+	default n
+	help
+	  This option enables the zephyr scientific library.
+
+if ZSL
+
+config ZSL_SINGLE_PRECISION
+	bool "Use single-precision floats."
+	default n
+	help
+	  Enabling this option will cause all zsl functions to use single
+	  precision (32-bit) floating point values, rather than the default of
+	  double-precision (64-bits).
+
+config ZSL_PLATFORM_OPT
+	int "Platform optimisations"
+	default 0
+	range 0 2
+	help
+	  Platform used for optimised assembly functions where possible.
+	  0 None
+	  1 ARM Thumb (GNU)
+	  2 ARM Thumb2 (GNU)
+
+config ZSL_VECTOR_INLINE
+	bool "Use inline vector functions."
+	default n
+	help
+	  Enabling this option will cause common vector functions to use inline
+	  versions, avoiding the overhead of function calls at the expense of
+	  a larger firmware image.
+
+config ZSL_MATRIX_INLINE
+	bool "Use inline matrix functions."
+	default n
+	help
+	  Enabling this option will cause common matrix functions to use inline
+	  versions, avoiding the overhead of function calls at the expense of
+	  a larger firmware image.
+	
+config ZSL_BOUNDS_CHECKS
+	bool "Enable bounds checking in functions."
+	default y
+	help
+	  Enabling this option will cause common functions to ensure that requested
+	  data is within the bounds of the vector, matrix, etc. object. This should
+	  generally always be enabled for safety reasons, but you may wish to
+	  disable it in exceptional circumstances for performance reasons.
+
+	  Note that the performance gains from enabling inline functions will
+	  generally be greater than the benefit of disabling bounds checks, and
+	  with far less risk associated with the decision.
+
+	  EXTREME CARE should be taken when disabling this option since it can
+	  easily lead to stack corruption and critical firmware failures. This
+	  should only be disabled as a final option, and only on known-good
+	  and thoroughly tested code.
+
+config ZSL_SHELL
+	bool "Enable the 'zsl' shell command and core shell support"
+	default n
+	depends on SHELL
+	help
+	  Enabling this option will make the 'zsl' shell command available, and
+	  enable general zscilib shell support.
+
+config ZSL_SHELL_CLR
+	bool "Enable the 'color' shell command"
+	default n
+	depends on ZSL_SHELL
+	help
+	  Enabling this option will make the 'color' shell command available.
+
+config ZSL_SHELL_ORIENT
+	bool "Enable the 'orient' shell command"
+	default n
+	depends on ZSL_SHELL
+	help
+	  Enabling this option will make the 'orient' shell command available.
+
+config ZSL_CLR_RGBF_BOUND_CAP
+	bool "Limit RGB float values to the 0.0..1.0 range"
+	default y
+
+endif

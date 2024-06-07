@@ -1,0 +1,10 @@
+zephyr_include_directories(.)
+
+zephyr_library_sources(fsl_clock.c)
+zephyr_library_sources_ifdef(CONFIG_ENTROPY_RV32M1_TRNG		fsl_trng.c)
+zephyr_library_sources_ifdef(CONFIG_HAS_RV32M1_CAU3_BLE		fsl_cau3_ble.c)
+zephyr_library_sources_ifdef(CONFIG_I2C_RV32M1_LPI2C		fsl_lpi2c.c)
+zephyr_library_sources_ifdef(CONFIG_PWM_RV32M1_TPM		fsl_tpm.c)
+zephyr_library_sources_ifdef(CONFIG_SOC_FLASH_RV32M1		fsl_flash.c)
+zephyr_library_sources_ifdef(CONFIG_SPI_RV32M1_LPSPI		fsl_lpspi.c)
+zephyr_library_sources_ifdef(CONFIG_UART_RV32M1_LPUART		fsl_lpuart.c)

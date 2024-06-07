@@ -1,0 +1,6 @@
+description: |
+    This devie is a air pressure sensor for support spi protocol.
+
+compatible: "us6330-015-s"
+
+include: [spi-device.yaml]

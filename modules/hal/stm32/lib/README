@@ -1,0 +1,7 @@
+
+Directory contains all the official libraries provided by STMicroelectronics.
+
+Available libs:
+  * stm32wb/hci:
+      Middleware for interprocessor communication on stm32wb dual core SoC
+  * ...

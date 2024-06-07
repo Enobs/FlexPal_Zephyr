@@ -1,0 +1,40 @@
+diff --git a/include/dt-bindings/pinctrl/gd32f405z(e-g-k)xx-pinctrl.h b/include/dt-bindings/pinctrl/gd32f405z(e-g-k)xx-pinctrl.h
+index c6142cc..d710bf7 100644
+--- a/include/dt-bindings/pinctrl/gd32f405z(e-g-k)xx-pinctrl.h
++++ b/include/dt-bindings/pinctrl/gd32f405z(e-g-k)xx-pinctrl.h
+@@ -1052,7 +1052,7 @@
+ #define TIMER0_CH0_PA8 \
+ 	GD32_PINMUX_AF('A', 8, AF1)
+ #define TIMER0_CH0_PE9 \
+-	GD32_PINMUX_AF('E', 9, AF0)
++	GD32_PINMUX_AF('E', 9, AF1)
+ 
+ /* TIMER0_CH0_ON */
+ #define TIMER0_CH0_ON_PA7 \
+@@ -1066,7 +1066,7 @@
+ #define TIMER0_CH1_PA9 \
+ 	GD32_PINMUX_AF('A', 9, AF1)
+ #define TIMER0_CH1_PE11 \
+-	GD32_PINMUX_AF('E', 11, AF0)
++	GD32_PINMUX_AF('E', 11, AF1)
+ 
+ /* TIMER0_CH1_ON */
+ #define TIMER0_CH1_ON_PB0 \
+@@ -1082,7 +1082,7 @@
+ #define TIMER0_CH2_PA10 \
+ 	GD32_PINMUX_AF('A', 10, AF1)
+ #define TIMER0_CH2_PE13 \
+-	GD32_PINMUX_AF('E', 13, AF0)
++	GD32_PINMUX_AF('E', 13, AF1)
+ 
+ /* TIMER0_CH2_ON */
+ #define TIMER0_CH2_ON_PB1 \
+@@ -1096,7 +1096,7 @@
+ #define TIMER0_CH3_PA11 \
+ 	GD32_PINMUX_AF('A', 11, AF1)
+ #define TIMER0_CH3_PE14 \
+-	GD32_PINMUX_AF('E', 14, AF0)
++	GD32_PINMUX_AF('E', 14, AF1)
+ 
+ /* TIMER0_ETI */
+ #define TIMER0_ETI_PA12 \

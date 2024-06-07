@@ -1,0 +1,4 @@
+name: lz4
+build:
+  cmake-ext: True
+  kconfig-ext: True

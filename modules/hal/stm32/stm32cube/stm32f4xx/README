@@ -1,0 +1,72 @@
+STM32CubeF4
+###########
+
+Origin:
+   ST Microelectronics
+   http://www.st.com/en/embedded-software/stm32cubef4.html
+
+Status:
+   version v1.27.1
+
+Purpose:
+   ST Microelectronics official MCU package for STM32F4 series.
+
+Description:
+   This package is an extract of official STM32CubeF4 package written by ST Microelectronics.
+   It is composed of STM32Cube hardware abstraction layer (HAL) and low layer (LL) plus a set
+   of CMSIS headers files, one for each SoC in STM32F4 series.
+
+Dependencies:
+    None.
+
+URL:
+   https://github.com/STMicroelectronics/STM32CubeF4
+
+Commit:
+   52757b5e33259a088509a777a9e3a5b971194c7d
+
+Maintained-by:
+   External
+
+License:
+   BSD-3-Clause
+
+License Link:
+   https://opensource.org/licenses/BSD-3-Clause
+
+Patch List:
+
+   *Changes from official delivery:
+    -dos2unix applied
+    -trailing white spaces removed
+
+   *Disable i2c HAL
+     Due to conflict with zephyr i2c.h (I2C_SPEED_STANDARD and I2C_SPEED_FAST
+     redefinition), deactivate STM32Cube I2C HAL. This raises no issue since
+     LL API is currently used for stm32 I2C driver.
+    Impacted files:
+     drivers/include/stm32f4xx_hal_conf.h
+    ST Bug tracker ID: NA. Not a stm32cube issue
+
+   *Provision to enable hal & ll asserts added
+    -Added stm32cube/stm32f4xx/drivers/include/stm32_assert.h
+    -Removed unused stm32cube/stm32f4xx/drivers/include/stm32_assert_template.h
+
+   *Unused variable in HAL_QSPI_Command_IT
+    -removed tickstart variable declaration
+    Impacted files:
+     drivers/src/stm32f4xx_hal_qspi.c
+    ST Bug tracker ID: 112664
+
+   *Enable legacy ethernet driver using HAL_ETH_LEGACY_MODULE_ENABLED
+    This will have to be removed once Zephyr driver is migrated ot the new
+    Cube HAL ethernet API.
+
+   *Wrap define UNUSED with an ifndef
+     This will prevent a compiler warning for the case the UNUSED macro
+     is already defined elsewhere in the project
+     Impacted files:
+      drivers/include/stm32f4xx_hal_def.h
+     ST Internal Reference: 136825
+
+   See release_note.html from STM32Cube

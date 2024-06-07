@@ -1,0 +1,5 @@
+# SPDX-License-Identifier: BSD-3-Clause
+
+# Generic architecture configs
+
+orsource "$(ARCH)/Kconfig"

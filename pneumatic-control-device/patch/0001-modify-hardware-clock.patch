@@ -1,0 +1,32 @@
+diff --git a/gd32f4xx/cmsis/gd/gd32f4xx/include/gd32f4xx.h b/gd32f4xx/cmsis/gd/gd32f4xx/include/gd32f4xx.h
+index 70feb09..91fb457 100644
+--- a/gd32f4xx/cmsis/gd/gd32f4xx/include/gd32f4xx.h
++++ b/gd32f4xx/cmsis/gd/gd32f4xx/include/gd32f4xx.h
+@@ -57,7 +57,8 @@ OF SUCH DAMAGE.
+ 
+ /* define value of high speed crystal oscillator (HXTAL) in Hz */
+ #if !defined  (HXTAL_VALUE)
+-#define HXTAL_VALUE    ((uint32_t)25000000)
++// #define HXTAL_VALUE    ((uint32_t)25000000)
++#define HXTAL_VALUE    ((uint32_t)8000000)
+ #endif /* high speed crystal oscillator value */
+ 
+ /* define startup timeout value of high speed crystal oscillator (HXTAL) */
+diff --git a/gd32f4xx/cmsis/gd/gd32f4xx/source/system_gd32f4xx.c b/gd32f4xx/cmsis/gd/gd32f4xx/source/system_gd32f4xx.c
+index f78725e..01007a4 100644
+--- a/gd32f4xx/cmsis/gd/gd32f4xx/source/system_gd32f4xx.c
++++ b/gd32f4xx/cmsis/gd/gd32f4xx/source/system_gd32f4xx.c
+@@ -47,11 +47,11 @@
+ //#define __SYSTEM_CLOCK_120M_PLL_8M_HXTAL        (uint32_t)(120000000)
+ //#define __SYSTEM_CLOCK_120M_PLL_25M_HXTAL       (uint32_t)(120000000)
+ //#define __SYSTEM_CLOCK_168M_PLL_IRC16M          (uint32_t)(168000000)
+-//#define __SYSTEM_CLOCK_168M_PLL_8M_HXTAL        (uint32_t)(168000000)
++#define __SYSTEM_CLOCK_168M_PLL_8M_HXTAL        (uint32_t)(168000000)
+ //#define __SYSTEM_CLOCK_168M_PLL_25M_HXTAL       (uint32_t)(168000000)
+ //#define __SYSTEM_CLOCK_200M_PLL_IRC16M          (uint32_t)(200000000)
+ //#define __SYSTEM_CLOCK_200M_PLL_8M_HXTAL        (uint32_t)(200000000)
+-#define __SYSTEM_CLOCK_200M_PLL_25M_HXTAL       (uint32_t)(200000000)
++//#define __SYSTEM_CLOCK_200M_PLL_25M_HXTAL       (uint32_t)(200000000)
+ //#define __SYSTEM_CLOCK_240M_PLL_IRC16M          (uint32_t)(240000000)
+ //#define __SYSTEM_CLOCK_240M_PLL_8M_HXTAL        (uint32_t)(240000000)
+ //#define __SYSTEM_CLOCK_240M_PLL_25M_HXTAL       (uint32_t)(240000000)
